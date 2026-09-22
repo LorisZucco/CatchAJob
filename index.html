@@ -10,17 +10,36 @@
 
 <body>
     <header class="cabecalho">
-        <nav>
-            <img src="./assets/img/" alt="Logo-da-App, contendo uma rede de pesca em meio a prédios tecnológicos.">
-            <button class="btn-candidato">Sou candidato</button>
-            <button class="btn-empresa">Empresa</button>
-            <button class="tema">Alterar tema da página</button>
-        </nav>
-        <div class="weather-api">
+        <nav class="menu">
 
+            <div class="acoes">
+
+                <button class="btn-reset" id="btn-reset">
+                    Começar novamente
+                </button>
+
+                <button class="btn-candidato">
+                    Sou candidato
+                </button>
+
+                <button class="btn-empresa">
+                    Empresa
+                </button>
+
+            </div>
+
+            <button class="tema">
+                Alterar tema da página
+            </button>
+
+        </nav>
+
+        <div class="weather-api">
         </div>
     </header>
-    <script src="./assets/scripts/main.js"></script>
+
+
+    <script src="./assets/scripts/main.js" type="module"></script>
 </body>
 
 </html>
