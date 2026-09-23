@@ -1,0 +1,207 @@
+[
+  {
+    "id": 1,
+    "empresa": "Nexa Digital",
+    "cargo": "Desenvolvedor Front-end Júnior",
+    "categoria": "Front-end",
+    "senioridade": "Júnior",
+    "requisitos": ["HTML", "CSS", "JavaScript", "Git", "Responsividade"],
+    "experienciaMinima": "0 a 1 ano",
+    "salario": "R$ 2.800 a R$ 3.800",
+    "modalidade": "Remoto",
+    "localizacao": "Brasil",
+    "tipoContrato": "CLT",
+    "descricao": "Desenvolvimento e manutenção de interfaces web responsivas.",
+    "beneficios": ["Vale-alimentação", "Plano de saúde", "Auxílio home office"]
+  },
+
+  {
+    "id": 2,
+    "empresa": "BlueWave Tecnologia",
+    "cargo": "Desenvolvedor Front-end Pleno",
+    "categoria": "Front-end",
+    "senioridade": "Pleno",
+    "requisitos": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Git",
+      "APIs REST",
+      "Responsividade"
+    ],
+    "experienciaMinima": "2 anos",
+    "salario": "R$ 5.500 a R$ 7.000",
+    "modalidade": "Híbrido",
+    "localizacao": "São Paulo - SP",
+    "tipoContrato": "CLT",
+    "descricao": "Desenvolvimento de interfaces modernas e integração com APIs.",
+    "beneficios": [
+      "Vale-refeição",
+      "Plano de saúde",
+      "Auxílio home office",
+      "Gympass"
+    ]
+  },
+
+  {
+    "id": 3,
+    "empresa": "PixelCode",
+    "cargo": "Desenvolvedor Front-end Júnior",
+    "categoria": "Front-end",
+    "senioridade": "Júnior",
+    "requisitos": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Git",
+      "Figma",
+      "Acessibilidade",
+      "UX/UI"
+    ],
+    "experienciaMinima": "6 meses",
+    "salario": "R$ 3.000 a R$ 4.200",
+    "modalidade": "Híbrido",
+    "localizacao": "Curitiba - PR",
+    "tipoContrato": "CLT",
+    "descricao": "Criação de interfaces acessíveis e responsivas em parceria com designers.",
+    "beneficios": ["Vale-alimentação", "Plano odontológico", "Auxílio educação"]
+  },
+
+  {
+    "id": 4,
+    "empresa": "CloudBridge",
+    "cargo": "Desenvolvedor Back-end Júnior",
+    "categoria": "Back-end",
+    "senioridade": "Júnior",
+    "requisitos": [
+      "JavaScript",
+      "Node.js",
+      "APIs REST",
+      "Git",
+      "SQL",
+      "Banco de dados"
+    ],
+    "experienciaMinima": "1 ano",
+    "salario": "R$ 3.500 a R$ 4.800",
+    "modalidade": "Remoto",
+    "localizacao": "Brasil",
+    "tipoContrato": "CLT",
+    "descricao": "Desenvolvimento de APIs e manutenção de serviços back-end.",
+    "beneficios": ["Vale-alimentação", "Plano de saúde", "Auxílio home office"]
+  },
+
+  {
+    "id": 5,
+    "empresa": "DataCore Solutions",
+    "cargo": "Desenvolvedor Back-end Pleno",
+    "categoria": "Back-end",
+    "senioridade": "Pleno",
+    "requisitos": [
+      "Java",
+      "Spring Boot",
+      "APIs REST",
+      "SQL",
+      "PostgreSQL",
+      "Docker",
+      "Git"
+    ],
+    "experienciaMinima": "3 anos",
+    "salario": "R$ 7.000 a R$ 9.000",
+    "modalidade": "Remoto",
+    "localizacao": "Brasil",
+    "tipoContrato": "PJ",
+    "descricao": "Desenvolvimento de serviços escaláveis e integração entre sistemas.",
+    "beneficios": [
+      "Auxílio home office",
+      "Auxílio equipamento",
+      "Horário flexível"
+    ]
+  },
+
+  {
+    "id": 6,
+    "empresa": "TechNova",
+    "cargo": "Desenvolvedor Full Stack Júnior",
+    "categoria": "Full Stack",
+    "senioridade": "Júnior",
+    "requisitos": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Node.js",
+      "APIs REST",
+      "Git",
+      "SQL"
+    ],
+    "experienciaMinima": "1 ano",
+    "salario": "R$ 4.000 a R$ 5.200",
+    "modalidade": "Remoto",
+    "localizacao": "Brasil",
+    "tipoContrato": "CLT",
+    "descricao": "Desenvolvimento de funcionalidades completas, atuando no front-end e back-end.",
+    "beneficios": ["Vale-alimentação", "Plano de saúde", "Auxílio home office"]
+  },
+
+  {
+    "id": 7,
+    "empresa": "Connecta Sistemas",
+    "cargo": "Desenvolvedor Full Stack Pleno",
+    "categoria": "Full Stack",
+    "senioridade": "Pleno",
+    "requisitos": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Node.js",
+      "APIs REST",
+      "SQL",
+      "Git",
+      "Docker"
+    ],
+    "experienciaMinima": "2 anos",
+    "salario": "R$ 6.000 a R$ 8.000",
+    "modalidade": "Híbrido",
+    "localizacao": "Florianópolis - SC",
+    "tipoContrato": "CLT",
+    "descricao": "Desenvolvimento de aplicações web completas e integração com serviços externos.",
+    "beneficios": [
+      "Vale-alimentação",
+      "Plano de saúde",
+      "Auxílio home office",
+      "Horário flexível"
+    ]
+  },
+
+  {
+    "id": 8,
+    "empresa": "InovaTech",
+    "cargo": "Desenvolvedor Full Stack Sênior",
+    "categoria": "Full Stack",
+    "senioridade": "Sênior",
+    "requisitos": [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Node.js",
+      "APIs REST",
+      "SQL",
+      "Docker",
+      "Git",
+      "AWS"
+    ],
+    "experienciaMinima": "5 anos",
+    "salario": "R$ 10.000 a R$ 14.000",
+    "modalidade": "Remoto",
+    "localizacao": "Brasil",
+    "tipoContrato": "PJ",
+    "descricao": "Desenvolvimento de aplicações web e participação nas decisões técnicas do produto.",
+    "beneficios": [
+      "Auxílio home office",
+      "Auxílio equipamento",
+      "Horário flexível",
+      "Orçamento para cursos"
+    ]
+  }
+]
