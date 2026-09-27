@@ -63,4 +63,18 @@ class Vaga {
   }
 }
 
-export { Vaga };
+function criarVagas(vagas) {
+  return vagas.map((vaga) => {
+    return new Vaga(
+      vaga.id,
+      vaga.empresa,
+      vaga.cargo,
+      vaga.requisitos,
+      vaga.salario,
+      vaga.modalidade,
+      vaga.experiencia,
+    );
+  });
+}
+
+export { Vaga, criarVagas };
