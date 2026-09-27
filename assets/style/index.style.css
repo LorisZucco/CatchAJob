@@ -445,3 +445,120 @@
     flex: 1 1 200px;
   }
 }
+/* RESULTADO DAS VAGAS */
+
+.resultado-vagas {
+  width: 100%;
+  padding: 2rem 1rem;
+  background-color: #f4f9fb;
+}
+
+.resultado-vagas h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #004b6b;
+}
+
+/* CONTAINER DOS CARDS */
+
+.lista-vagas {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+/* CARD */
+
+.card-vaga {
+  width: 100%;
+  max-width: 320px;
+  padding: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  background-color: #ffffff;
+
+  border: 1px solid #d4e5ea;
+  border-radius: 12px;
+
+  box-shadow: 0 5px 15px rgba(0, 75, 107, 0.1);
+}
+
+/* MELHOR VAGA */
+
+.card-melhor-vaga {
+  width: 100%;
+  max-width: 500px;
+
+  border: 3px solid #f58220;
+
+  box-shadow: 0 8px 25px rgba(245, 130, 32, 0.25);
+
+  order: -1;
+}
+
+/* TÍTULO DO CARD */
+
+.card-vaga h3 {
+  color: #006b8f;
+  font-size: 1.3rem;
+}
+
+/* EMPRESA */
+
+.card-vaga .empresa {
+  color: #555555;
+  font-weight: 600;
+}
+
+/* COMPATIBILIDADE */
+
+.compatibilidade {
+  padding: 0.7rem;
+
+  border-radius: 8px;
+
+  background-color: #eef8fb;
+
+  color: #006b8f;
+
+  font-size: 1.1rem;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+/* DESTAQUE */
+
+.destaque-melhor-vaga {
+  color: #f58220;
+
+  font-weight: 700;
+
+  text-align: center;
+}
+
+/* HABILIDADES */
+
+.habilidades {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.habilidades h4 {
+  color: #004b6b;
+}
+
+.habilidades p {
+  color: #444444;
+  line-height: 1.5;
+}
