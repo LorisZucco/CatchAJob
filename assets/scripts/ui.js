@@ -393,5 +393,31 @@ function mostrarFormularioCandidato() {
         </section>
     `;
 }
+function obterDadosFormulario() {
+  const nome = document.getElementById("nome-completo").value;
 
-export { mostrarFormularioCandidato };
+  const categoria = document.querySelector(
+    'input[name="categoria"]:checked',
+  ).value;
+
+  const tecnologias = document.querySelectorAll(
+    'input[name="tecnologias"]:checked',
+  );
+
+  const habilidades = Array.from(tecnologias).map(
+    (tecnologia) => tecnologia.value,
+  );
+
+  const experiencia = Number(
+    document.getElementById("tempo-experiencia").value,
+  );
+
+  return {
+    nome: nome,
+    categoria: categoria,
+    habilidades: habilidades,
+    experiencia: experiencia,
+  };
+}
+
+export { mostrarFormularioCandidato, obterDadosFormulario };
