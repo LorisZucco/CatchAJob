@@ -1,4 +1,8 @@
-import { mostrarFormularioCandidato, obterDadosFormulario } from "./ui.js";
+import {
+  mostrarFormularioCandidato,
+  obterDadosFormulario,
+  mostrarResultados,
+} from "./ui.js";
 
 import { salvarPerfil, carregarVagas } from "./dados.js";
 
@@ -42,5 +46,8 @@ btnCandidato.addEventListener("click", () => {
 
     console.log("Resultados da análise:");
     console.log(resultados);
+
+    // Mostra os resultados na página
+    mostrarResultados(resultados);
   });
 });
