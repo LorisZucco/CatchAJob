@@ -77,4 +77,15 @@ function criarVagas(vagas) {
   });
 }
 
-export { Vaga, criarVagas };
+function encontrarMelhorVaga(resultados) {
+  const melhorVaga = resultados.reduce((melhor, atual) => {
+    if (atual.percentual > melhor.percentual) {
+      return atual;
+    }
+
+    return melhor;
+  });
+
+  return melhorVaga;
+}
+export { Vaga, criarVagas, encontrarMelhorVaga };

@@ -6,7 +6,7 @@ import {
 
 import { salvarPerfil, carregarVagas } from "./dados.js";
 
-import { criarVagas } from "./motor.js";
+import { criarVagas, encontrarMelhorVaga } from "./motor.js";
 
 const btnCandidato = document.getElementById("btn-candidato");
 
@@ -40,6 +40,7 @@ btnCandidato.addEventListener("click", () => {
     console.log(vagas);
 
     // Analisa a compatibilidade do candidato com cada vaga
+    // Analisa a compatibilidade com todas as vagas
     const resultados = vagas.map((vaga) => {
       return vaga.analisar(perfil.habilidades);
     });
@@ -47,7 +48,13 @@ btnCandidato.addEventListener("click", () => {
     console.log("Resultados da análise:");
     console.log(resultados);
 
-    // Mostra os resultados na página
-    mostrarResultados(resultados);
+    // Encontra a vaga com maior compatibilidade
+    const melhorVaga = encontrarMelhorVaga(resultados);
+
+    console.log("Melhor vaga:");
+    console.log(melhorVaga);
+
+    // Envia os resultados para a interface
+    mostrarResultados(resultados, melhorVaga);
   });
 });
