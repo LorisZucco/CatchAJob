@@ -419,5 +419,84 @@ function obterDadosFormulario() {
     experiencia: experiencia,
   };
 }
+function mostrarResultados(resultados) {
+  const conteudo = document.getElementById("conteudo-principal");
 
-export { mostrarFormularioCandidato, obterDadosFormulario };
+  conteudo.innerHTML = `
+        <section id="resultado-vagas" class="resultado-vagas">
+            <h2>Vagas encontradas para você</h2>
+
+            <div class="lista-vagas"></div>
+        </section>
+    `;
+
+  const listaVagas = document.querySelector(".lista-vagas");
+
+  resultados.forEach((resultado) => {
+    const card = document.createElement("article");
+
+    card.classList.add("card-vaga");
+
+    card.innerHTML = `
+            <h3>${resultado.vaga.cargo}</h3>
+
+            <p>
+                <strong>Empresa:</strong>
+                ${resultado.vaga.empresa}
+            </p>
+
+            <p>
+                <strong>Compatibilidade:</strong>
+                ${resultado.percentual}%
+            </p>
+
+            <p>
+                <strong>Classificação:</strong>
+                ${resultado.classificacao}
+            </p>
+
+            <p>
+                <strong>Modalidade:</strong>
+                ${resultado.vaga.modalidade}
+            </p>
+
+            <p>
+                <strong>Salário:</strong>
+                ${resultado.vaga.salario}
+            </p>
+
+            <p>
+                <strong>Experiência:</strong>
+                ${resultado.vaga.experiencia}
+            </p>
+
+            <div class="habilidades">
+                <h4>Habilidades encontradas</h4>
+
+                <ul>
+                    ${resultado.encontradas
+                      .map((habilidade) => {
+                        return `<li>${habilidade}</li>`;
+                      })
+                      .join("")}
+                </ul>
+            </div>
+
+            <div class="habilidades">
+                <h4>Habilidades a desenvolver</h4>
+
+                <ul>
+                    ${resultado.faltantes
+                      .map((habilidade) => {
+                        return `<li>${habilidade}</li>`;
+                      })
+                      .join("")}
+                </ul>
+            </div>
+        `;
+
+    listaVagas.appendChild(card);
+  });
+}
+
+export { mostrarFormularioCandidato, obterDadosFormulario, mostrarResultados };
