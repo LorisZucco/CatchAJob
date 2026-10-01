@@ -357,7 +357,10 @@ function mostrarFormularioCandidato() {
                         >
 
                     </div>
-
+        <p
+  id="mensagem-formulario"
+  class="mensagem-formulario"
+></p>
 
                     <button
                         type="submit"
@@ -641,8 +644,37 @@ function mostrarResultados(resultados, melhoresVagas) {
   });
 }
 
+function mostrarMensagem(titulo, mensagem) {
+  const conteudo = document.getElementById("conteudo-principal");
+
+  conteudo.innerHTML = `
+        <section class="mensagem-sistema">
+
+            <h2>${titulo}</h2>
+
+            <p>${mensagem}</p>
+
+        </section>
+    `;
+}
+
+function mostrarErroFormulario(mensagem) {
+  const elementoMensagem = document.getElementById("mensagem-formulario");
+
+  if (!elementoMensagem) {
+    return;
+  }
+
+  elementoMensagem.textContent = mensagem;
+}
 // ========================================
 // EXPORTAÇÕES
 // ========================================
 
-export { mostrarFormularioCandidato, obterDadosFormulario, mostrarResultados };
+export {
+  mostrarFormularioCandidato,
+  obterDadosFormulario,
+  mostrarResultados,
+  mostrarMensagem,
+  mostrarErroFormulario,
+};
