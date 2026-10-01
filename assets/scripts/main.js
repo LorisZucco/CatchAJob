@@ -27,14 +27,15 @@ const btnReset = document.getElementById("btn-reset");
 // ========================================
 
 async function analisarPerfil(perfil) {
-  // ========================================
-  // VERIFICA SE O PERFIL É VÁLIDO
-  // ========================================
-
-  if (!perfil || !perfil.categoria || !Array.isArray(perfil.habilidades)) {
+  if (
+    !perfil ||
+    !perfil.categoria ||
+    !Array.isArray(perfil.habilidades) ||
+    typeof perfil.experiencia !== "number"
+  ) {
     mostrarMensagem(
       "Perfil inválido",
-      "Não foi possível analisar os dados do candidato.",
+      "Os dados salvos não puderam ser utilizados. Clique em Começar novamente para cadastrar seu perfil.",
     );
 
     return;

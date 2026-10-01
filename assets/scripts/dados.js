@@ -35,9 +35,13 @@ function carregarPerfil() {
   }
 
   try {
-    return JSON.parse(perfilSalvo);
+    const perfil = JSON.parse(perfilSalvo);
+
+    return perfil;
   } catch (error) {
     console.error("Erro ao carregar o perfil salvo:", error);
+
+    localStorage.removeItem("skillMatchProfile");
 
     return null;
   }
