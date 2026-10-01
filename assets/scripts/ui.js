@@ -419,20 +419,137 @@ function obterDadosFormulario() {
     experiencia: experiencia,
   };
 }
-function mostrarResultados(resultados) {
+function formatarExperiencia(experiencia) {
+  if (experiencia === 0) {
+    return "Não exige experiência";
+  }
+
+  if (experiencia === 0.5) {
+    return "6 meses";
+  }
+
+  if (experiencia === 1) {
+    return "1 ano";
+  }
+
+  return `${experiencia} anos`;
+}
+function mostrarResultados(resultados, melhorVaga) {
   const conteudo = document.getElementById("conteudo-principal");
 
+  // Remove a melhor vaga da lista das outras vagas
+  const outrasVagas = resultados.filter((resultado) => {
+    return resultado.vaga.id !== melhorVaga.vaga.id;
+  });
+
+  // Cria a estrutura da página de resultados
   conteudo.innerHTML = `
         <section id="resultado-vagas" class="resultado-vagas">
+
             <h2>Vagas encontradas para você</h2>
 
-            <div class="lista-vagas"></div>
+
+            <section class="melhor-vaga">
+
+                <h3>Melhor vaga para o seu perfil</h3>
+
+                <article class="card-vaga card-melhor-vaga">
+
+                    <span class="destaque-melhor-vaga">
+                        Melhor compatibilidade
+                    </span>
+
+                    <h3>${melhorVaga.vaga.cargo}</h3>
+
+                    <p>
+                        <strong>Empresa:</strong>
+                        ${melhorVaga.vaga.empresa}
+                    </p>
+
+                    <p class="compatibilidade">
+                        ${melhorVaga.percentual}% de compatibilidade
+                    </p>
+
+                    <p>
+                        <strong>Classificação:</strong>
+                        ${melhorVaga.classificacao}
+                    </p>
+
+                    <p>
+                        <strong>Modalidade:</strong>
+                        ${melhorVaga.vaga.modalidade}
+                    </p>
+
+                    <p>
+                        <strong>Salário:</strong>
+                        ${melhorVaga.vaga.salario}
+                    </p>
+
+                    <p>
+    <strong>Experiência mínima:</strong>
+   ${formatarExperiencia(melhorVaga.vaga.experienciaMinima)}
+</p>
+
+<p>
+    <strong>Requisito de experiência:</strong>
+    ${
+      melhorVaga.atendeExperiencia
+        ? "Atende ao requisito"
+        : "Ainda não atende ao requisito"
+    }
+</p>
+
+
+                    <div class="habilidades">
+
+                        <h4>Habilidades encontradas</h4>
+
+                        <ul>
+                            ${melhorVaga.encontradas
+                              .map((habilidade) => {
+                                return `<li>${habilidade}</li>`;
+                              })
+                              .join("")}
+                        </ul>
+
+                    </div>
+
+
+                    <div class="habilidades">
+
+                        <h4>Habilidades a desenvolver</h4>
+
+                        <ul>
+                            ${melhorVaga.faltantes
+                              .map((habilidade) => {
+                                return `<li>${habilidade}</li>`;
+                              })
+                              .join("")}
+                        </ul>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <section class="outras-vagas">
+
+                <h3>Outras vagas</h3>
+
+                <div class="lista-vagas">
+                </div>
+
+            </section>
+
         </section>
     `;
 
   const listaVagas = document.querySelector(".lista-vagas");
 
-  resultados.forEach((resultado) => {
+  // Cria os cards das outras vagas
+  outrasVagas.forEach((resultado) => {
     const card = document.createElement("article");
 
     card.classList.add("card-vaga");
@@ -445,9 +562,8 @@ function mostrarResultados(resultados) {
                 ${resultado.vaga.empresa}
             </p>
 
-            <p>
-                <strong>Compatibilidade:</strong>
-                ${resultado.percentual}%
+            <p class="compatibilidade">
+                ${resultado.percentual}% de compatibilidade
             </p>
 
             <p>
@@ -466,11 +582,22 @@ function mostrarResultados(resultados) {
             </p>
 
             <p>
-                <strong>Experiência:</strong>
-                ${resultado.vaga.experiencia}
-            </p>
+    <strong>Experiência mínima:</strong>
+    ${formatarExperiencia(resultado.vaga.experienciaMinima)}
+</p>
+
+<p>
+    <strong>Requisito de experiência:</strong>
+    ${
+      resultado.atendeExperiencia
+        ? "Atende ao requisito"
+        : "Ainda não atende ao requisito"
+    }
+</p>
+
 
             <div class="habilidades">
+
                 <h4>Habilidades encontradas</h4>
 
                 <ul>
@@ -480,9 +607,12 @@ function mostrarResultados(resultados) {
                       })
                       .join("")}
                 </ul>
+
             </div>
 
+
             <div class="habilidades">
+
                 <h4>Habilidades a desenvolver</h4>
 
                 <ul>
@@ -492,6 +622,7 @@ function mostrarResultados(resultados) {
                       })
                       .join("")}
                 </ul>
+
             </div>
         `;
 

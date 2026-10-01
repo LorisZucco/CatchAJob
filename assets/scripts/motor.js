@@ -3,18 +3,20 @@ class Vaga {
     id,
     empresa,
     cargo,
+    categoria,
     requisitos,
     salario,
     modalidade,
-    experiencia,
+    experienciaMinima,
   ) {
     this.id = id;
     this.empresa = empresa;
     this.cargo = cargo;
+    this.categoria = categoria;
     this.requisitos = requisitos;
     this.salario = salario;
     this.modalidade = modalidade;
-    this.experiencia = experiencia;
+    this.experienciaMinima = experienciaMinima;
   }
 
   calcularCompatibilidade(habilidades) {
@@ -48,15 +50,29 @@ class Vaga {
     return "Baixa";
   }
 
-  analisar(habilidades) {
+  verificarExperiencia(experienciaCandidato) {
+    console.log("Experiência candidato:", experienciaCandidato);
+    console.log("Experiência mínima:", this.experienciaMinima);
+
+    if (experienciaCandidato >= this.experienciaMinima) {
+      return true;
+    }
+
+    return false;
+  }
+
+  analisar(habilidades, experienciaCandidato) {
     const resultado = this.calcularCompatibilidade(habilidades);
 
     const classificacao = this.classificar(resultado.percentual);
+
+    const atendeExperiencia = this.verificarExperiencia(experienciaCandidato);
 
     return {
       vaga: this,
       percentual: resultado.percentual,
       classificacao: classificacao,
+      atendeExperiencia: atendeExperiencia,
       encontradas: resultado.encontradas,
       faltantes: resultado.faltantes,
     };
@@ -69,14 +85,25 @@ function criarVagas(vagas) {
       vaga.id,
       vaga.empresa,
       vaga.cargo,
+      vaga.categoria,
       vaga.requisitos,
       vaga.salario,
       vaga.modalidade,
-      vaga.experiencia,
+      vaga.experienciaMinima,
     );
   });
 }
+function filtrarVagasPorCategoria(vagas, categoriaCandidato) {
+  return vagas.filter((vaga) => {
+    if (categoriaCandidato === "Full Stack") {
+      return true;
+    }
 
+    return (
+      vaga.categoria === categoriaCandidato || vaga.categoria === "Full Stack"
+    );
+  });
+}
 function encontrarMelhorVaga(resultados) {
   const melhorVaga = resultados.reduce((melhor, atual) => {
     if (atual.percentual > melhor.percentual) {
@@ -88,4 +115,5 @@ function encontrarMelhorVaga(resultados) {
 
   return melhorVaga;
 }
-export { Vaga, criarVagas, encontrarMelhorVaga };
+
+export { Vaga, criarVagas, filtrarVagasPorCategoria, encontrarMelhorVaga };

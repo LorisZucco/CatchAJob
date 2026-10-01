@@ -6,7 +6,11 @@ import {
 
 import { salvarPerfil, carregarVagas } from "./dados.js";
 
-import { criarVagas, encontrarMelhorVaga } from "./motor.js";
+import {
+  criarVagas,
+  filtrarVagasPorCategoria,
+  encontrarMelhorVaga,
+} from "./motor.js";
 
 const btnCandidato = document.getElementById("btn-candidato");
 
@@ -33,28 +37,37 @@ btnCandidato.addEventListener("click", () => {
     console.log("Vagas vindas do JSON:");
     console.log(dadosVagas);
 
-    // Transforma os objetos do JSON em objetos da classe Vaga
+    // Transforma os dados do JSON em objetos da classe Vaga
+    // Transforma os dados do JSON em objetos da classe Vaga
     const vagas = criarVagas(dadosVagas);
 
-    console.log("Vagas transformadas em objetos Vaga:");
-    console.log(vagas);
+    console.log("Categoria do candidato:");
+    console.log(perfil.categoria);
 
-    // Analisa a compatibilidade do candidato com cada vaga
-    // Analisa a compatibilidade com todas as vagas
-    const resultados = vagas.map((vaga) => {
-      return vaga.analisar(perfil.habilidades);
+    console.log("Categorias das vagas:");
+    console.log(vagas.map((vaga) => vaga.categoria));
+
+    // Filtra as vagas pela categoria do candidato
+    const vagasCompativeis = filtrarVagasPorCategoria(vagas, perfil.categoria);
+
+    console.log("Vagas compatíveis com a categoria:");
+    console.log(vagasCompativeis);
+
+    // Analisa as habilidades somente das vagas compatíveis
+    const resultados = vagasCompativeis.map((vaga) => {
+      return vaga.analisar(perfil.habilidades, perfil.experiencia);
     });
 
     console.log("Resultados da análise:");
     console.log(resultados);
 
-    // Encontra a vaga com maior compatibilidade
+    // Encontra a melhor vaga
     const melhorVaga = encontrarMelhorVaga(resultados);
 
     console.log("Melhor vaga:");
     console.log(melhorVaga);
 
-    // Envia os resultados para a interface
+    // Mostra os resultados
     mostrarResultados(resultados, melhorVaga);
   });
 });
