@@ -795,3 +795,45 @@
 
   gap: 1.5rem;
 }
+.mensagem-sistema {
+  width: calc(100% - 2rem);
+  max-width: 600px;
+
+  margin: 2rem auto;
+  padding: 2rem 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 1rem;
+
+  border: 2px solid #006b8f;
+  border-radius: 12px;
+
+  background-color: #ffffff;
+
+  box-shadow: 0 5px 15px rgba(0, 75, 107, 0.12);
+
+  text-align: center;
+}
+
+.mensagem-sistema h2 {
+  color: #006b8f;
+}
+
+.mensagem-sistema p {
+  color: #444444;
+
+  line-height: 1.5;
+}
+.mensagem-formulario {
+  margin-top: 1rem;
+
+  color: #b42318;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  text-align: center;
+}

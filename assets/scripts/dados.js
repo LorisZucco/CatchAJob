@@ -3,7 +3,7 @@ async function carregarVagas() {
     const response = await fetch("./assets/data/vagas.json");
 
     if (!response.ok) {
-      alert("Não foi possível carregar as vagas.");
+      console.error("Não foi possível carregar o arquivo de vagas.");
       return [];
     }
 
@@ -11,8 +11,7 @@ async function carregarVagas() {
 
     return vagas;
   } catch (error) {
-    alert("Ocorreu um erro ao carregar as vagas.");
-    console.error(error);
+    console.error("Ocorreu um erro ao carregar as vagas:", error);
 
     return [];
   }
@@ -35,7 +34,13 @@ function carregarPerfil() {
     return null;
   }
 
-  return JSON.parse(perfilSalvo);
+  try {
+    return JSON.parse(perfilSalvo);
+  } catch (error) {
+    console.error("Erro ao carregar o perfil salvo:", error);
+
+    return null;
+  }
 }
 // cria a função de carregar o perfil, e verifica se não há perfil retorna nulo. para ser tratado pelo main.js
 function limparPerfil() {

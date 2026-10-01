@@ -2,6 +2,8 @@ import {
   mostrarFormularioCandidato,
   obterDadosFormulario,
   mostrarResultados,
+  mostrarMensagem,
+  mostrarErroFormulario,
 } from "./ui.js";
 
 import {
@@ -25,27 +27,87 @@ const btnReset = document.getElementById("btn-reset");
 // ========================================
 
 async function analisarPerfil(perfil) {
-  // Carrega as vagas do JSON
+  // ========================================
+  // VERIFICA SE O PERFIL É VÁLIDO
+  // ========================================
+
+  if (!perfil || !perfil.categoria || !Array.isArray(perfil.habilidades)) {
+    mostrarMensagem(
+      "Perfil inválido",
+      "Não foi possível analisar os dados do candidato.",
+    );
+
+    return;
+  }
+
+  // ========================================
+  // CARREGA AS VAGAS
+  // ========================================
+
   const dadosVagas = await carregarVagas();
 
-  // Transforma os dados em objetos da classe Vaga
+  // ========================================
+  // VERIFICA SE AS VAGAS FORAM CARREGADAS
+  // ========================================
+
+  if (dadosVagas.length === 0) {
+    mostrarMensagem(
+      "Não foi possível carregar as vagas",
+      "Tente novamente mais tarde.",
+    );
+
+    return;
+  }
+
+  // ========================================
+  // CRIA OS OBJETOS VAGA
+  // ========================================
+
   const vagas = criarVagas(dadosVagas);
 
-  // Filtra pelas categorias compatíveis
+  // ========================================
+  // FILTRA PELA CATEGORIA
+  // ========================================
+
   const vagasCompativeis = filtrarVagasPorCategoria(vagas, perfil.categoria);
 
-  // Analisa habilidades e experiência
+  // ========================================
+  // VERIFICA SE EXISTEM VAGAS COMPATÍVEIS
+  // ========================================
+
+  if (vagasCompativeis.length === 0) {
+    mostrarMensagem(
+      "Nenhuma vaga encontrada",
+      "Não encontramos vagas compatíveis com a sua categoria no momento.",
+    );
+
+    return;
+  }
+
+  // ========================================
+  // ANALISA SKILLS E EXPERIÊNCIA
+  // ========================================
+
   const resultados = vagasCompativeis.map((vaga) => {
     return vaga.analisar(perfil.habilidades, perfil.experiencia);
   });
 
-  // Ordena da maior compatibilidade para a menor
+  // ========================================
+  // ORDENA OS RESULTADOS
+  // ========================================
+
   const resultadosOrdenados = ordenarPorCompatibilidade(resultados);
 
-  // Encontra uma ou mais melhores vagas
+  // ========================================
+  // ENCONTRA A MELHOR OU MELHORES VAGAS
+  // ========================================
+
   const melhoresVagas = encontrarMelhoresVagas(resultadosOrdenados);
 
-  // Exibe na página
+  // ========================================
+  // MOSTRA NA INTERFACE
+  // ========================================
+
   mostrarResultados(resultadosOrdenados, melhoresVagas);
 }
 
@@ -61,16 +123,21 @@ btnCandidato.addEventListener("click", () => {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    // Pega os dados preenchidos
     const perfil = obterDadosFormulario();
+
+    if (perfil.habilidades.length === 0) {
+      mostrarErroFormulario(
+        "Selecione pelo menos uma tecnologia ou ferramenta.",
+      );
+
+      return;
+    }
 
     console.log("Perfil do candidato:");
     console.log(perfil);
 
-    // Salva no LocalStorage
     salvarPerfil(perfil);
 
-    // Executa toda a análise
     await analisarPerfil(perfil);
   });
 });
