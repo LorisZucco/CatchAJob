@@ -837,3 +837,100 @@
 
   text-align: center;
 }
+
+/* ========================================
+   TEMA ESCURO
+======================================== */
+
+body.tema-escuro {
+  background-color: #101820;
+  color: #f4f9fb;
+}
+body.tema-escuro .cabecalho {
+  background-image:
+    linear-gradient(rgba(10, 24, 32, 0.82), rgba(10, 24, 32, 0.82)),
+    url("../img/Imagem de logo.jpg");
+}
+body.tema-escuro .btn-reset,
+body.tema-escuro .tema {
+  background-color: #162832;
+  color: #ffffff;
+
+  border-color: #4ba8c8;
+}
+
+body.tema-escuro .btn-reset:hover,
+body.tema-escuro .tema:hover {
+  background-color: #006b8f;
+}
+body.tema-escuro .formulario-candidato {
+  background-color: #101820;
+}
+
+body.tema-escuro .formulario-candidato fieldset {
+  background-color: #162832;
+
+  border-color: #4ba8c8;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+body.tema-escuro .formulario-candidato legend,
+body.tema-escuro .campo-formulario > label,
+body.tema-escuro .campo-formulario > p {
+  color: #7cc9e3;
+}
+
+body.tema-escuro .campo-formulario small {
+  color: #c0cbd0;
+}
+body.tema-escuro .campo-formulario > input[type="text"],
+body.tema-escuro .campo-formulario > input[type="number"] {
+  background-color: #223640;
+  color: #ffffff;
+
+  border-color: #4b6977;
+}
+
+body.tema-escuro .campo-formulario > input[type="text"]:focus,
+body.tema-escuro .campo-formulario > input[type="number"]:focus {
+  background-color: #293f4a;
+
+  border-color: #4ba8c8;
+}
+body.tema-escuro .grupo-tecnologias > div {
+  background-color: #223640;
+  border-color: #3d5966;
+}
+
+body.tema-escuro .grupo-tecnologias > div:hover {
+  background-color: #294550;
+  border-color: #4ba8c8;
+}
+
+body.tema-escuro .grupo-tecnologias label,
+body.tema-escuro .campo-formulario input[type="radio"] + label {
+  color: #f4f9fb;
+}
+body.tema-escuro .resultado-vagas {
+  background-color: #101820;
+  color: #f4f9fb;
+}
+
+body.tema-escuro .card-vaga {
+  background-color: #162832;
+  color: #f4f9fb;
+
+  border-color: #3d5966;
+
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.3);
+}
+
+body.tema-escuro .card-vaga h3,
+body.tema-escuro .card-vaga h4 {
+  color: #7cc9e3;
+}
+
+body.tema-escuro .card-melhor-vaga {
+  border-color: #f58220;
+}

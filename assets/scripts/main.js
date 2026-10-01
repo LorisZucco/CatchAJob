@@ -20,8 +20,13 @@ import {
   ordenarPorCompatibilidade,
 } from "./motor.js";
 
+import { alterarTema, carregarTema } from "./tema.js";
+
 const btnCandidato = document.getElementById("btn-candidato");
 const btnReset = document.getElementById("btn-reset");
+const btnTema = document.querySelector(".tema");
+
+carregarTema();
 // ========================================
 // ANALISAR PERFIL
 // ========================================
@@ -163,3 +168,6 @@ if (perfilSalvo) {
 
   analisarPerfil(perfilSalvo);
 }
+btnTema.addEventListener("click", () => {
+  alterarTema();
+});
