@@ -104,17 +104,26 @@ function filtrarVagasPorCategoria(vagas, categoriaCandidato) {
     );
   });
 }
-function encontrarMelhorVaga(resultados) {
-  const melhorVaga = resultados.reduce((melhor, atual) => {
-    if (atual.percentual > melhor.percentual) {
-      return atual;
+function encontrarMelhoresVagas(resultados) {
+  if (resultados.length === 0) {
+    return [];
+  }
+
+  const maiorPercentual = resultados.reduce((maior, resultado) => {
+    if (resultado.percentual > maior) {
+      return resultado.percentual;
     }
 
-    return melhor;
+    return maior;
+  }, 0);
+
+  const melhoresVagas = resultados.filter((resultado) => {
+    return resultado.percentual === maiorPercentual;
   });
 
-  return melhorVaga;
+  return melhoresVagas;
 }
+
 function ordenarPorCompatibilidade(resultados) {
   return resultados.toSorted((a, b) => {
     return b.percentual - a.percentual;
@@ -125,6 +134,6 @@ export {
   Vaga,
   criarVagas,
   filtrarVagasPorCategoria,
-  encontrarMelhorVaga,
+  encontrarMelhoresVagas,
   ordenarPorCompatibilidade,
 };

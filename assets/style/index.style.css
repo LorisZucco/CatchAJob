@@ -758,6 +758,12 @@
 ======================================== */
 
 @media (min-width: 700px) {
+  .lista-melhores-vagas {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+  }
   .resultado-vagas {
     padding: 3rem 2rem;
   }
@@ -779,4 +785,13 @@
   .card-vaga.card-melhor-vaga {
     max-width: 500px;
   }
+}
+.lista-melhores-vagas {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 1.5rem;
 }
