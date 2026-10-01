@@ -10,6 +10,7 @@ import {
   criarVagas,
   filtrarVagasPorCategoria,
   encontrarMelhorVaga,
+  ordenarPorCompatibilidade,
 } from "./motor.js";
 
 const btnCandidato = document.getElementById("btn-candidato");
@@ -53,21 +54,23 @@ btnCandidato.addEventListener("click", () => {
     console.log("Vagas compatíveis com a categoria:");
     console.log(vagasCompativeis);
 
-    // Analisa as habilidades somente das vagas compatíveis
-    const resultados = vagasCompativeis.map((vaga) => {
-      return vaga.analisar(perfil.habilidades, perfil.experiencia);
-    });
+  // Analisa a compatibilidade das vagas
+const resultados = vagasCompativeis.map((vaga) => {
+    return vaga.analisar(
+        perfil.habilidades,
+        perfil.experiencia
+    );
+});
 
-    console.log("Resultados da análise:");
-    console.log(resultados);
+// Ordena os resultados do maior percentual para o menor
+const resultadosOrdenados =
+    ordenarPorCompatibilidade(resultados);
 
-    // Encontra a melhor vaga
-    const melhorVaga = encontrarMelhorVaga(resultados);
-
-    console.log("Melhor vaga:");
-    console.log(melhorVaga);
+// Encontra a melhor vaga
+const melhorVaga =
+    encontrarMelhorVaga(resultadosOrdenados);
 
     // Mostra os resultados
-    mostrarResultados(resultados, melhorVaga);
+    mostrarResultados(resultadosOrdenados, melhorVaga);
   });
 });

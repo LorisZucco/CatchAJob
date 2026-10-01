@@ -115,5 +115,16 @@ function encontrarMelhorVaga(resultados) {
 
   return melhorVaga;
 }
+function ordenarPorCompatibilidade(resultados) {
+  return resultados.toSorted((a, b) => {
+    return b.percentual - a.percentual;
+  });
+}
 
-export { Vaga, criarVagas, filtrarVagasPorCategoria, encontrarMelhorVaga };
+export {
+  Vaga,
+  criarVagas,
+  filtrarVagasPorCategoria,
+  encontrarMelhorVaga,
+  ordenarPorCompatibilidade,
+};
