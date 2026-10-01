@@ -20,21 +20,27 @@ async function carregarVagas() {
 // Cria a função de carregar as vagas, trata possivel erro de caso nao encontre devolve um alert na tela, e para nao retornar undefined ele retorna um array vazio após a mensagem de que nao foi possível carregar as vagas e o erro que ocorreu.
 
 function salvarPerfil(perfil) {
-  localStorage.setItem("perfil", JSON.stringify(perfil));
+  if (!perfil) {
+    return;
+  }
+
+  localStorage.setItem("skillMatchProfile", JSON.stringify(perfil));
 }
 // cria função de salvar o perfil como json, no LocalStorage.
 
 function carregarPerfil() {
-  const perfilSalvo = localStorage.getItem("perfil");
+  const perfilSalvo = localStorage.getItem("skillMatchProfile");
 
-  if (perfilSalvo === null) {
+  if (!perfilSalvo) {
     return null;
   }
 
   return JSON.parse(perfilSalvo);
 }
 // cria a função de carregar o perfil, e verifica se não há perfil retorna nulo. para ser tratado pelo main.js
-
-export { carregarVagas, salvarPerfil, carregarPerfil };
+function limparPerfil() {
+  localStorage.removeItem("skillMatchProfile");
+}
+export { carregarVagas, salvarPerfil, carregarPerfil, limparPerfil };
 
 //exporta as funções relacionadas a cima

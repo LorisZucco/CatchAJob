@@ -4,7 +4,12 @@ import {
   mostrarResultados,
 } from "./ui.js";
 
-import { salvarPerfil, carregarVagas } from "./dados.js";
+import {
+  carregarVagas,
+  salvarPerfil,
+  carregarPerfil,
+  limparPerfil,
+} from "./dados.js";
 
 import {
   criarVagas,
@@ -14,6 +19,39 @@ import {
 } from "./motor.js";
 
 const btnCandidato = document.getElementById("btn-candidato");
+const btnReset = document.getElementById("btn-reset");
+// ========================================
+// ANALISAR PERFIL
+// ========================================
+
+async function analisarPerfil(perfil) {
+  // Carrega as vagas do JSON
+  const dadosVagas = await carregarVagas();
+
+  // Transforma os dados em objetos da classe Vaga
+  const vagas = criarVagas(dadosVagas);
+
+  // Filtra pelas categorias compatíveis
+  const vagasCompativeis = filtrarVagasPorCategoria(vagas, perfil.categoria);
+
+  // Analisa habilidades e experiência
+  const resultados = vagasCompativeis.map((vaga) => {
+    return vaga.analisar(perfil.habilidades, perfil.experiencia);
+  });
+
+  // Ordena da maior compatibilidade para a menor
+  const resultadosOrdenados = ordenarPorCompatibilidade(resultados);
+
+  // Encontra uma ou mais melhores vagas
+  const melhoresVagas = encontrarMelhoresVagas(resultadosOrdenados);
+
+  // Exibe na página
+  mostrarResultados(resultadosOrdenados, melhoresVagas);
+}
+
+// ========================================
+// BOTÃO SOU CANDIDATO
+// ========================================
 
 btnCandidato.addEventListener("click", () => {
   mostrarFormularioCandidato();
@@ -23,50 +61,37 @@ btnCandidato.addEventListener("click", () => {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    // Pega os dados preenchidos pelo candidato
+    // Pega os dados preenchidos
     const perfil = obterDadosFormulario();
 
     console.log("Perfil do candidato:");
     console.log(perfil);
 
-    // Salva o perfil no LocalStorage
+    // Salva no LocalStorage
     salvarPerfil(perfil);
 
-    // Carrega as vagas do arquivo JSON
-    const dadosVagas = await carregarVagas();
-
-    console.log("Vagas vindas do JSON:");
-    console.log(dadosVagas);
-
-    // Transforma os dados do JSON em objetos da classe Vaga
-    // Transforma os dados do JSON em objetos da classe Vaga
-    const vagas = criarVagas(dadosVagas);
-
-    console.log("Categoria do candidato:");
-    console.log(perfil.categoria);
-
-    console.log("Categorias das vagas:");
-    console.log(vagas.map((vaga) => vaga.categoria));
-
-    // Filtra as vagas pela categoria do candidato
-    const vagasCompativeis = filtrarVagasPorCategoria(vagas, perfil.categoria);
-
-    console.log("Vagas compatíveis com a categoria:");
-    console.log(vagasCompativeis);
-
-    // Analisa a compatibilidade das vagas
-    const resultados = vagasCompativeis.map((vaga) => {
-      return vaga.analisar(perfil.habilidades, perfil.experiencia);
-    });
-
-    // Ordena os resultados do maior percentual para o menor
-    const resultadosOrdenados = ordenarPorCompatibilidade(resultados);
-
-    // Encontra a melhor vaga
-    const melhoresVagas = encontrarMelhoresVagas(resultadosOrdenados);
-
-    console.log("Melhores vagas:", melhoresVagas);
-
-    mostrarResultados(resultadosOrdenados, melhoresVagas);
+    // Executa toda a análise
+    await analisarPerfil(perfil);
   });
 });
+// ========================================
+// BOTÃO COMEÇAR NOVAMENTE
+// ========================================
+
+btnReset.addEventListener("click", () => {
+  limparPerfil();
+
+  window.location.reload();
+});
+// ========================================
+// VERIFICAR PERFIL SALVO
+// ========================================
+
+const perfilSalvo = carregarPerfil();
+
+if (perfilSalvo) {
+  console.log("Perfil recuperado do LocalStorage:");
+  console.log(perfilSalvo);
+
+  analisarPerfil(perfilSalvo);
+}
