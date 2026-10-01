@@ -1,3 +1,7 @@
+// ========================================
+// FORMULÁRIO DO CANDIDATO
+// ========================================
+
 function mostrarFormularioCandidato() {
   const conteudo = document.getElementById("conteudo-principal");
 
@@ -12,9 +16,11 @@ function mostrarFormularioCandidato() {
                         Preencha os dados abaixo para encontrar a sua melhor vaga
                     </legend>
 
+
                     <div class="campo-formulario">
+
                         <label for="nome-completo">
-                            Nome completo
+                            Nome Completo
                         </label>
 
                         <input
@@ -24,6 +30,24 @@ function mostrarFormularioCandidato() {
                             placeholder="Insira seu nome aqui"
                             required
                         >
+
+                    </div>
+
+
+                    <div class="campo-formulario">
+
+                        <label for="idade">
+                            Idade
+                        </label>
+
+                        <input
+                            type="number"
+                            name="idade"
+                            id="idade"
+                            min="18"
+                            required
+                        >
+
                     </div>
 
 
@@ -32,6 +56,7 @@ function mostrarFormularioCandidato() {
                         <p>
                             Qual a sua categoria de atuação principal?
                         </p>
+
 
                         <div>
                             <input
@@ -85,7 +110,7 @@ function mostrarFormularioCandidato() {
                         </p>
 
                         <small>
-                            Selecione todas as opções que você domina.
+                            Marque todas que você possui conhecimento.
                         </small>
 
 
@@ -98,10 +123,7 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="HTML"
                                 >
-
-                                <label for="tec-html">
-                                    HTML
-                                </label>
+                                <label for="tec-html">HTML</label>
                             </div>
 
 
@@ -112,10 +134,7 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="CSS"
                                 >
-
-                                <label for="tec-css">
-                                    CSS
-                                </label>
+                                <label for="tec-css">CSS</label>
                             </div>
 
 
@@ -126,10 +145,7 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="JavaScript"
                                 >
-
-                                <label for="tec-js">
-                                    JavaScript
-                                </label>
+                                <label for="tec-js">JavaScript</label>
                             </div>
 
 
@@ -140,10 +156,7 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="TypeScript"
                                 >
-
-                                <label for="tec-ts">
-                                    TypeScript
-                                </label>
+                                <label for="tec-ts">TypeScript</label>
                             </div>
 
 
@@ -154,10 +167,7 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="React"
                                 >
-
-                                <label for="tec-react">
-                                    React
-                                </label>
+                                <label for="tec-react">React</label>
                             </div>
 
 
@@ -168,7 +178,6 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="Responsividade"
                                 >
-
                                 <label for="tec-resp">
                                     Responsividade
                                 </label>
@@ -182,10 +191,7 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="Node.js"
                                 >
-
-                                <label for="tec-node">
-                                    Node.js
-                                </label>
+                                <label for="tec-node">Node.js</label>
                             </div>
 
 
@@ -196,10 +202,7 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="Java"
                                 >
-
-                                <label for="tec-java">
-                                    Java
-                                </label>
+                                <label for="tec-java">Java</label>
                             </div>
 
 
@@ -210,7 +213,6 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="Spring Boot"
                                 >
-
                                 <label for="tec-spring">
                                     Spring Boot
                                 </label>
@@ -224,7 +226,6 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="APIs REST"
                                 >
-
                                 <label for="tec-apis">
                                     APIs REST
                                 </label>
@@ -238,10 +239,7 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="SQL"
                                 >
-
-                                <label for="tec-sql">
-                                    SQL
-                                </label>
+                                <label for="tec-sql">SQL</label>
                             </div>
 
 
@@ -252,7 +250,6 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="PostgreSQL"
                                 >
-
                                 <label for="tec-postgres">
                                     PostgreSQL
                                 </label>
@@ -266,7 +263,6 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="Banco de dados"
                                 >
-
                                 <label for="tec-db">
                                     Banco de dados
                                 </label>
@@ -280,10 +276,7 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="Git"
                                 >
-
-                                <label for="tec-git">
-                                    Git
-                                </label>
+                                <label for="tec-git">Git</label>
                             </div>
 
 
@@ -294,10 +287,7 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="Docker"
                                 >
-
-                                <label for="tec-docker">
-                                    Docker
-                                </label>
+                                <label for="tec-docker">Docker</label>
                             </div>
 
 
@@ -308,10 +298,7 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="AWS"
                                 >
-
-                                <label for="tec-aws">
-                                    AWS
-                                </label>
+                                <label for="tec-aws">AWS</label>
                             </div>
 
 
@@ -322,10 +309,7 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="Figma"
                                 >
-
-                                <label for="tec-figma">
-                                    Figma
-                                </label>
+                                <label for="tec-figma">Figma</label>
                             </div>
 
 
@@ -336,7 +320,6 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="Acessibilidade"
                                 >
-
                                 <label for="tec-acessibilidade">
                                     Acessibilidade
                                 </label>
@@ -350,10 +333,7 @@ function mostrarFormularioCandidato() {
                                     name="tecnologias"
                                     value="UX/UI"
                                 >
-
-                                <label for="tec-uxui">
-                                    UX/UI
-                                </label>
+                                <label for="tec-uxui">UX/UI</label>
                             </div>
 
                         </div>
@@ -363,16 +343,16 @@ function mostrarFormularioCandidato() {
 
                     <div class="campo-formulario">
 
-                        <label for="tempo-experiencia">
+                        <label for="tempo-de-experiencia">
                             Quantos anos de experiência possui?
                         </label>
 
                         <input
                             type="number"
-                            name="tempo-experiencia"
-                            id="tempo-experiencia"
+                            name="tempo-de-experiencia"
+                            id="tempo-de-experiencia"
                             min="0"
-                            step="1"
+                            step="0.5"
                             required
                         >
 
@@ -393,32 +373,47 @@ function mostrarFormularioCandidato() {
         </section>
     `;
 }
+
+// ========================================
+// OBTER DADOS DO FORMULÁRIO
+// ========================================
+
 function obterDadosFormulario() {
   const nome = document.getElementById("nome-completo").value;
 
-  const categoria = document.querySelector(
-    'input[name="categoria"]:checked',
-  ).value;
+  const idade = Number(document.getElementById("idade").value);
 
-  const tecnologias = document.querySelectorAll(
+  const categoriaSelecionada = document.querySelector(
+    'input[name="categoria"]:checked',
+  );
+
+  const tecnologiasSelecionadas = document.querySelectorAll(
     'input[name="tecnologias"]:checked',
   );
 
-  const habilidades = Array.from(tecnologias).map(
-    (tecnologia) => tecnologia.value,
-  );
-
   const experiencia = Number(
-    document.getElementById("tempo-experiencia").value,
+    document.getElementById("tempo-de-experiencia").value,
   );
 
-  return {
+  const habilidades = Array.from(tecnologiasSelecionadas).map((tecnologia) => {
+    return tecnologia.value;
+  });
+
+  const perfil = {
     nome: nome,
-    categoria: categoria,
+    idade: idade,
+    categoria: categoriaSelecionada ? categoriaSelecionada.value : null,
     habilidades: habilidades,
     experiencia: experiencia,
   };
+
+  return perfil;
 }
+
+// ========================================
+// FORMATAR EXPERIÊNCIA
+// ========================================
+
 function formatarExperiencia(experiencia) {
   if (experiencia === 0) {
     return "Não exige experiência";
@@ -434,109 +429,184 @@ function formatarExperiencia(experiencia) {
 
   return `${experiencia} anos`;
 }
-function mostrarResultados(resultados, melhorVaga) {
+
+// ========================================
+// CRIAR LISTA DE HABILIDADES
+// ========================================
+
+function criarListaHabilidades(habilidades) {
+  return habilidades
+    .map((habilidade) => {
+      return `<li>${habilidade}</li>`;
+    })
+    .join("");
+}
+
+// ========================================
+// CRIAR CARD DE VAGA
+// ========================================
+
+function criarCardVaga(resultado, melhorVaga = false) {
+  const card = document.createElement("article");
+
+  card.classList.add("card-vaga");
+
+  if (melhorVaga) {
+    card.classList.add("card-melhor-vaga");
+  }
+
+  card.innerHTML = `
+
+        ${
+          melhorVaga
+            ? `
+                    <span class="destaque-melhor-vaga">
+                        Melhor compatibilidade
+                    </span>
+                `
+            : ""
+        }
+
+
+        <h3>
+            ${resultado.vaga.cargo}
+        </h3>
+
+
+        <p>
+            <strong>Empresa:</strong>
+            ${resultado.vaga.empresa}
+        </p>
+
+
+        <p class="compatibilidade">
+            ${resultado.percentual}% de compatibilidade
+        </p>
+
+
+        <p>
+            <strong>Classificação:</strong>
+            ${resultado.classificacao}
+        </p>
+
+
+        <p>
+            <strong>Modalidade:</strong>
+            ${resultado.vaga.modalidade}
+        </p>
+
+
+        <p>
+            <strong>Salário:</strong>
+            ${resultado.vaga.salario}
+        </p>
+
+
+        <p>
+            <strong>Experiência mínima:</strong>
+            ${formatarExperiencia(resultado.vaga.experienciaMinima)}
+        </p>
+
+
+        <p>
+            <strong>Requisito de experiência:</strong>
+
+            ${
+              resultado.atendeExperiencia
+                ? "Atende ao requisito"
+                : "Ainda não atende ao requisito"
+            }
+        </p>
+
+
+        <div class="habilidades">
+
+            <h4>
+                Habilidades encontradas
+            </h4>
+
+            <ul>
+                ${criarListaHabilidades(resultado.encontradas)}
+            </ul>
+
+        </div>
+
+
+        <div class="habilidades">
+
+            <h4>
+                Habilidades a desenvolver
+            </h4>
+
+            <ul>
+                ${criarListaHabilidades(resultado.faltantes)}
+            </ul>
+
+        </div>
+    `;
+
+  return card;
+}
+
+// ========================================
+// MOSTRAR RESULTADOS
+// ========================================
+
+function mostrarResultados(resultados, melhoresVagas) {
   const conteudo = document.getElementById("conteudo-principal");
 
-  // Remove a melhor vaga da lista das outras vagas
+  // ====================================
+  // SEPARAR MELHORES DAS OUTRAS
+  // ====================================
+
   const outrasVagas = resultados.filter((resultado) => {
-    return resultado.vaga.id !== melhorVaga.vaga.id;
+    const ehMelhorVaga = melhoresVagas.some((melhor) => {
+      return melhor.vaga.id === resultado.vaga.id;
+    });
+
+    return !ehMelhorVaga;
   });
 
-  // Cria a estrutura da página de resultados
-  conteudo.innerHTML = `
-        <section id="resultado-vagas" class="resultado-vagas">
+  // ====================================
+  // ESTRUTURA DOS RESULTADOS
+  // ====================================
 
-            <h2>Vagas encontradas para você</h2>
+  conteudo.innerHTML = `
+
+        <section
+            id="resultado-vagas"
+            class="resultado-vagas"
+        >
+
+            <h2>
+                Vagas encontradas para você
+            </h2>
 
 
             <section class="melhor-vaga">
 
-                <h3>Melhor vaga para o seu perfil</h3>
+                <h3>
 
-                <article class="card-vaga card-melhor-vaga">
+                    ${
+                      melhoresVagas.length > 1
+                        ? "Melhores vagas para o seu perfil"
+                        : "Melhor vaga para o seu perfil"
+                    }
 
-                    <span class="destaque-melhor-vaga">
-                        Melhor compatibilidade
-                    </span>
-
-                    <h3>${melhorVaga.vaga.cargo}</h3>
-
-                    <p>
-                        <strong>Empresa:</strong>
-                        ${melhorVaga.vaga.empresa}
-                    </p>
-
-                    <p class="compatibilidade">
-                        ${melhorVaga.percentual}% de compatibilidade
-                    </p>
-
-                    <p>
-                        <strong>Classificação:</strong>
-                        ${melhorVaga.classificacao}
-                    </p>
-
-                    <p>
-                        <strong>Modalidade:</strong>
-                        ${melhorVaga.vaga.modalidade}
-                    </p>
-
-                    <p>
-                        <strong>Salário:</strong>
-                        ${melhorVaga.vaga.salario}
-                    </p>
-
-                    <p>
-    <strong>Experiência mínima:</strong>
-   ${formatarExperiencia(melhorVaga.vaga.experienciaMinima)}
-</p>
-
-<p>
-    <strong>Requisito de experiência:</strong>
-    ${
-      melhorVaga.atendeExperiencia
-        ? "Atende ao requisito"
-        : "Ainda não atende ao requisito"
-    }
-</p>
+                </h3>
 
 
-                    <div class="habilidades">
-
-                        <h4>Habilidades encontradas</h4>
-
-                        <ul>
-                            ${melhorVaga.encontradas
-                              .map((habilidade) => {
-                                return `<li>${habilidade}</li>`;
-                              })
-                              .join("")}
-                        </ul>
-
-                    </div>
-
-
-                    <div class="habilidades">
-
-                        <h4>Habilidades a desenvolver</h4>
-
-                        <ul>
-                            ${melhorVaga.faltantes
-                              .map((habilidade) => {
-                                return `<li>${habilidade}</li>`;
-                              })
-                              .join("")}
-                        </ul>
-
-                    </div>
-
-                </article>
+                <div class="lista-melhores-vagas">
+                </div>
 
             </section>
 
 
             <section class="outras-vagas">
 
-                <h3>Outras vagas</h3>
+                <h3>
+                    Outras vagas
+                </h3>
 
                 <div class="lista-vagas">
                 </div>
@@ -546,88 +616,33 @@ function mostrarResultados(resultados, melhorVaga) {
         </section>
     `;
 
+  // ====================================
+  // MOSTRAR MELHORES VAGAS
+  // ====================================
+
+  const listaMelhoresVagas = document.querySelector(".lista-melhores-vagas");
+
+  melhoresVagas.forEach((resultado) => {
+    const card = criarCardVaga(resultado, true);
+
+    listaMelhoresVagas.appendChild(card);
+  });
+
+  // ====================================
+  // MOSTRAR OUTRAS VAGAS
+  // ====================================
+
   const listaVagas = document.querySelector(".lista-vagas");
 
-  // Cria os cards das outras vagas
   outrasVagas.forEach((resultado) => {
-    const card = document.createElement("article");
-
-    card.classList.add("card-vaga");
-
-    card.innerHTML = `
-            <h3>${resultado.vaga.cargo}</h3>
-
-            <p>
-                <strong>Empresa:</strong>
-                ${resultado.vaga.empresa}
-            </p>
-
-            <p class="compatibilidade">
-                ${resultado.percentual}% de compatibilidade
-            </p>
-
-            <p>
-                <strong>Classificação:</strong>
-                ${resultado.classificacao}
-            </p>
-
-            <p>
-                <strong>Modalidade:</strong>
-                ${resultado.vaga.modalidade}
-            </p>
-
-            <p>
-                <strong>Salário:</strong>
-                ${resultado.vaga.salario}
-            </p>
-
-            <p>
-    <strong>Experiência mínima:</strong>
-    ${formatarExperiencia(resultado.vaga.experienciaMinima)}
-</p>
-
-<p>
-    <strong>Requisito de experiência:</strong>
-    ${
-      resultado.atendeExperiencia
-        ? "Atende ao requisito"
-        : "Ainda não atende ao requisito"
-    }
-</p>
-
-
-            <div class="habilidades">
-
-                <h4>Habilidades encontradas</h4>
-
-                <ul>
-                    ${resultado.encontradas
-                      .map((habilidade) => {
-                        return `<li>${habilidade}</li>`;
-                      })
-                      .join("")}
-                </ul>
-
-            </div>
-
-
-            <div class="habilidades">
-
-                <h4>Habilidades a desenvolver</h4>
-
-                <ul>
-                    ${resultado.faltantes
-                      .map((habilidade) => {
-                        return `<li>${habilidade}</li>`;
-                      })
-                      .join("")}
-                </ul>
-
-            </div>
-        `;
+    const card = criarCardVaga(resultado);
 
     listaVagas.appendChild(card);
   });
 }
+
+// ========================================
+// EXPORTAÇÕES
+// ========================================
 
 export { mostrarFormularioCandidato, obterDadosFormulario, mostrarResultados };
