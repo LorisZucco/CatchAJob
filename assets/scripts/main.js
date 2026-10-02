@@ -1,3 +1,7 @@
+// ========================================
+// IMPORTAÇÕES DA INTERFACE
+// ========================================
+
 import {
   mostrarFormularioCandidato,
   obterDadosFormulario,
@@ -6,6 +10,10 @@ import {
   mostrarErroFormulario,
 } from "./ui.js";
 
+// ========================================
+// IMPORTAÇÕES DE DADOS
+// ========================================
+
 import {
   carregarVagas,
   salvarPerfil,
@@ -13,26 +21,50 @@ import {
   limparPerfil,
 } from "./dados.js";
 
+// ========================================
+// IMPORTAÇÕES DO MOTOR DE COMPATIBILIDADE
+// ========================================
+
 import {
   criarVagas,
   filtrarVagasPorCategoria,
   encontrarMelhoresVagas,
   ordenarPorCompatibilidade,
   contarAnalise,
+  recomendarEstudos,
 } from "./motor.js";
+
+// ========================================
+// IMPORTAÇÕES DO TEMA
+// ========================================
 
 import { alterarTema, carregarTema } from "./tema.js";
 
+// ========================================
+// ELEMENTOS DA PÁGINA
+// ========================================
+
 const btnCandidato = document.getElementById("btn-candidato");
+
 const btnReset = document.getElementById("btn-reset");
+
 const btnTema = document.querySelector(".tema");
 
-carregarTema();
 // ========================================
-// ANALISAR PERFIL
+// CARREGAR TEMA SALVO
+// ========================================
+
+carregarTema();
+
+// ========================================
+// ANALISAR PERFIL DO CANDIDATO
 // ========================================
 
 async function analisarPerfil(perfil) {
+  // ========================================
+  // VALIDAR PERFIL
+  // ========================================
+
   if (
     !perfil ||
     !perfil.categoria ||
@@ -48,13 +80,30 @@ async function analisarPerfil(perfil) {
   }
 
   // ========================================
-  // CARREGA AS VAGAS
+  // MOSTRAR ESTADO DE CARREGAMENTO
+  // ========================================
+
+  mostrarMensagem(
+    "Carregando vagas...",
+    "Aguarde enquanto analisamos as melhores oportunidades para o seu perfil.",
+  );
+
+  // ========================================
+  // INTERVALO PARA EXIBIR O CARREGAMENTO
+  // ========================================
+
+  await new Promise((resolve) => {
+    setTimeout(resolve, 1000);
+  });
+
+  // ========================================
+  // CARREGAR VAGAS DO JSON
   // ========================================
 
   const dadosVagas = await carregarVagas();
 
   // ========================================
-  // VERIFICA SE AS VAGAS FORAM CARREGADAS
+  // VERIFICAR SE AS VAGAS FORAM CARREGADAS
   // ========================================
 
   if (dadosVagas.length === 0) {
@@ -67,19 +116,19 @@ async function analisarPerfil(perfil) {
   }
 
   // ========================================
-  // CRIA OS OBJETOS VAGA
+  // TRANSFORMAR DADOS EM OBJETOS VAGA
   // ========================================
 
   const vagas = criarVagas(dadosVagas);
 
   // ========================================
-  // FILTRA PELA CATEGORIA
+  // FILTRAR VAGAS PELA CATEGORIA
   // ========================================
 
   const vagasCompativeis = filtrarVagasPorCategoria(vagas, perfil.categoria);
 
   // ========================================
-  // VERIFICA SE EXISTEM VAGAS COMPATÍVEIS
+  // VERIFICAR SE EXISTEM VAGAS COMPATÍVEIS
   // ========================================
 
   if (vagasCompativeis.length === 0) {
@@ -90,11 +139,17 @@ async function analisarPerfil(perfil) {
 
     return;
   }
+
+  // ========================================
+  // CONTABILIZAR ANÁLISE COM CLOSURE
+  // ========================================
+
   const numeroAnalise = contarAnalise();
 
   console.log(`Análise número ${numeroAnalise} realizada nesta sessão.`);
+
   // ========================================
-  // ANALISA SKILLS E EXPERIÊNCIA
+  // ANALISAR HABILIDADES E EXPERIÊNCIA
   // ========================================
 
   const resultados = vagasCompativeis.map((vaga) => {
@@ -102,37 +157,57 @@ async function analisarPerfil(perfil) {
   });
 
   // ========================================
-  // ORDENA OS RESULTADOS
+  // ORDENAR POR COMPATIBILIDADE
   // ========================================
 
   const resultadosOrdenados = ordenarPorCompatibilidade(resultados);
 
   // ========================================
-  // ENCONTRA A MELHOR OU MELHORES VAGAS
+  // ENCONTRAR MELHOR OU MELHORES VAGAS
   // ========================================
 
   const melhoresVagas = encontrarMelhoresVagas(resultadosOrdenados);
 
   // ========================================
-  // MOSTRA NA INTERFACE
+  // GERAR RECOMENDAÇÕES DE ESTUDO
   // ========================================
 
-  mostrarResultados(resultadosOrdenados, melhoresVagas);
+  const recomendacoes = recomendarEstudos(resultadosOrdenados);
+
+  // ========================================
+  // MOSTRAR RESULTADOS NA INTERFACE
+  // ========================================
+
+  mostrarResultados(resultadosOrdenados, melhoresVagas, recomendacoes);
 }
 
 // ========================================
-// BOTÃO SOU CANDIDATO
+// BOTÃO "SOU CANDIDATO"
 // ========================================
 
 btnCandidato.addEventListener("click", () => {
+  // Exibe o formulário do candidato
   mostrarFormularioCandidato();
 
   const form = document.getElementById("form-candidato");
 
+  // ========================================
+  // ENVIO DO FORMULÁRIO
+  // ========================================
+
   form.addEventListener("submit", async (event) => {
+    // Impede o recarregamento padrão da página
     event.preventDefault();
 
+    // ========================================
+    // OBTER DADOS DO FORMULÁRIO
+    // ========================================
+
     const perfil = obterDadosFormulario();
+
+    // ========================================
+    // VALIDAR HABILIDADES
+    // ========================================
 
     if (perfil.habilidades.length === 0) {
       mostrarErroFormulario(
@@ -142,35 +217,46 @@ btnCandidato.addEventListener("click", () => {
       return;
     }
 
-    console.log("Perfil do candidato:");
-    console.log(perfil);
+    // ========================================
+    // SALVAR PERFIL NO LOCALSTORAGE
+    // ========================================
 
     salvarPerfil(perfil);
+
+    // ========================================
+    // ANALISAR PERFIL
+    // ========================================
 
     await analisarPerfil(perfil);
   });
 });
+
 // ========================================
-// BOTÃO COMEÇAR NOVAMENTE
+// BOTÃO "COMEÇAR NOVAMENTE"
 // ========================================
 
 btnReset.addEventListener("click", () => {
+  // Remove apenas o perfil salvo
   limparPerfil();
 
+  // Recarrega a aplicação
   window.location.reload();
 });
+
 // ========================================
-// VERIFICAR PERFIL SALVO
+// BOTÃO "ALTERAR TEMA"
+// ========================================
+
+btnTema.addEventListener("click", () => {
+  alterarTema();
+});
+
+// ========================================
+// VERIFICAR PERFIL SALVO AO INICIAR
 // ========================================
 
 const perfilSalvo = carregarPerfil();
 
 if (perfilSalvo) {
-  console.log("Perfil recuperado do LocalStorage:");
-  console.log(perfilSalvo);
-
   analisarPerfil(perfilSalvo);
 }
-btnTema.addEventListener("click", () => {
-  alterarTema();
-});

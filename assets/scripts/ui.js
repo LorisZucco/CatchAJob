@@ -555,7 +555,7 @@ function criarCardVaga(resultado, melhorVaga = false) {
 // MOSTRAR RESULTADOS
 // ========================================
 
-function mostrarResultados(resultados, melhoresVagas) {
+function mostrarResultados(resultados, melhoresVagas, recomendacoes) {
   const conteudo = document.getElementById("conteudo-principal");
 
   // ====================================
@@ -571,53 +571,96 @@ function mostrarResultados(resultados, melhoresVagas) {
   });
 
   // ====================================
+  // CRIAR RECOMENDAÇÃO DE ESTUDO
+  // ====================================
+
+  let recomendacaoHTML = "";
+
+  if (recomendacoes.length > 0) {
+    recomendacaoHTML = `
+      <section class="recomendacao-estudo">
+
+        <h3>
+          Recomendação de estudo
+        </h3>
+
+        <p>
+          Com base nas vagas analisadas, recomendamos priorizar:
+        </p>
+
+        <ul>
+          ${recomendacoes
+            .map((habilidade) => {
+              return `<li>${habilidade}</li>`;
+            })
+            .join("")}
+        </ul>
+
+      </section>
+    `;
+  } else {
+    recomendacaoHTML = `
+      <section class="recomendacao-estudo">
+
+        <h3>
+          Recomendação de estudo
+        </h3>
+
+        <p>
+          Você já possui todas as habilidades exigidas pelas vagas analisadas.
+        </p>
+
+      </section>
+    `;
+  }
+
+  // ====================================
   // ESTRUTURA DOS RESULTADOS
   // ====================================
 
   conteudo.innerHTML = `
+    <section
+      id="resultado-vagas"
+      class="resultado-vagas"
+    >
 
-        <section
-            id="resultado-vagas"
-            class="resultado-vagas"
-        >
-
-            <h2>
-                Vagas encontradas para você
-            </h2>
-
-
-            <section class="melhor-vaga">
-
-                <h3>
-
-                    ${
-                      melhoresVagas.length > 1
-                        ? "Melhores vagas para o seu perfil"
-                        : "Melhor vaga para o seu perfil"
-                    }
-
-                </h3>
+      <h2>
+        Vagas encontradas para você
+      </h2>
 
 
-                <div class="lista-melhores-vagas">
-                </div>
+      <section class="melhor-vaga">
 
-            </section>
+        <h3>
+          ${
+            melhoresVagas.length > 1
+              ? "Melhores vagas para o seu perfil"
+              : "Melhor vaga para o seu perfil"
+          }
+        </h3>
+
+        <div class="lista-melhores-vagas">
+        </div>
+
+      </section>
 
 
-            <section class="outras-vagas">
+      <section class="outras-vagas">
 
-                <h3>
-                    Outras vagas
-                </h3>
+        <h3>
+          Outras vagas
+        </h3>
 
-                <div class="lista-vagas">
-                </div>
+        <div class="lista-vagas">
+        </div>
 
-            </section>
+      </section>
 
-        </section>
-    `;
+
+      ${recomendacaoHTML}
+
+    </section>
+  `;
 
   // ====================================
   // MOSTRAR MELHORES VAGAS
