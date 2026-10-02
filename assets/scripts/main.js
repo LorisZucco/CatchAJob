@@ -41,6 +41,12 @@ import {
 import { alterarTema, carregarTema } from "./tema.js";
 
 // ========================================
+// IMPORTAÇÕES DO CLIMA
+// ========================================
+
+import { carregarClima } from "./clima.js";
+
+// ========================================
 // ELEMENTOS DA PÁGINA
 // ========================================
 
@@ -55,6 +61,12 @@ const btnTema = document.querySelector(".tema");
 // ========================================
 
 carregarTema();
+
+// ========================================
+// CARREGAR CLIMA
+// ========================================
+
+carregarClima();
 
 // ========================================
 // ANALISAR PERFIL DO CANDIDATO
@@ -103,13 +115,26 @@ async function analisarPerfil(perfil) {
   const dadosVagas = await carregarVagas();
 
   // ========================================
-  // VERIFICAR SE AS VAGAS FORAM CARREGADAS
+  // VERIFICAR ERRO NO CARREGAMENTO
+  // ========================================
+
+  if (dadosVagas === null) {
+    mostrarMensagem(
+      "Erro ao carregar as vagas",
+      "Não foi possível carregar as vagas. Tente novamente mais tarde.",
+    );
+
+    return;
+  }
+
+  // ========================================
+  // VERIFICAR CATÁLOGO VAZIO
   // ========================================
 
   if (dadosVagas.length === 0) {
     mostrarMensagem(
-      "Não foi possível carregar as vagas",
-      "Tente novamente mais tarde.",
+      "Nenhuma vaga disponível",
+      "Não existem vagas cadastradas no momento.",
     );
 
     return;
@@ -187,6 +212,7 @@ async function analisarPerfil(perfil) {
 
 btnCandidato.addEventListener("click", () => {
   // Exibe o formulário do candidato
+
   mostrarFormularioCandidato();
 
   const form = document.getElementById("form-candidato");
@@ -197,6 +223,7 @@ btnCandidato.addEventListener("click", () => {
 
   form.addEventListener("submit", async (event) => {
     // Impede o recarregamento padrão da página
+
     event.preventDefault();
 
     // ========================================
@@ -237,9 +264,11 @@ btnCandidato.addEventListener("click", () => {
 
 btnReset.addEventListener("click", () => {
   // Remove apenas o perfil salvo
+
   limparPerfil();
 
   // Recarrega a aplicação
+
   window.location.reload();
 });
 

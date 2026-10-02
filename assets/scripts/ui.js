@@ -6,7 +6,10 @@ function mostrarFormularioCandidato() {
   const conteudo = document.getElementById("conteudo-principal");
 
   conteudo.innerHTML = `
-    <section class="formulario-candidato">
+    <section
+      class="formulario-candidato"
+      aria-label="Perfil do candidato"
+    >
 
       <form id="form-candidato">
 
@@ -602,6 +605,12 @@ function criarCardVaga(resultado, melhorVaga = false) {
     <p>
       <strong>Empresa:</strong>
       ${resultado.vaga.empresa}
+    </p>
+
+
+    <p>
+      <strong>Área:</strong>
+      ${resultado.vaga.getArea()}
     </p>
 
 
