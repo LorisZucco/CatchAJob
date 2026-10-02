@@ -22,11 +22,14 @@ import {
 
 import { alterarTema, carregarTema } from "./tema.js";
 
+import { carregarClima } from "./clima.js";
+
 const btnCandidato = document.getElementById("btn-candidato");
 const btnReset = document.getElementById("btn-reset");
 const btnTema = document.querySelector(".tema");
 
 carregarTema();
+carregarClima();
 // ========================================
 // ANALISAR PERFIL
 // ========================================
