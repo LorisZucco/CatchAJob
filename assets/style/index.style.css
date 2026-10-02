@@ -9,6 +9,62 @@
 }
 
 /* ========================================
+   CONFIGURAÇÕES GERAIS
+   MOBILE FIRST
+======================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+
+  background-color: #f4f9fb;
+  color: #333333;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  line-height: 1.5;
+}
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+/*
+  Mantém o H1 disponível para leitores
+  de tela sem interferir visualmente
+  na logo do cabeçalho.
+*/
+
+.titulo-principal {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+
+  white-space: nowrap;
+
+  border: 0;
+}
+
+/* Foco visível para navegação por teclado */
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #f58220;
+  outline-offset: 3px;
+}
+
+/* ========================================
    CABEÇALHO
 ======================================== */
 
@@ -36,16 +92,16 @@
   width: 100%;
   min-height: 100vh;
 
+  padding: 1.5rem;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  padding: 1.5rem;
 }
 
 /* ========================================
-   BOTÕES DE AÇÃO
+   AÇÕES DO MENU
 ======================================== */
 
 .acoes {
@@ -57,6 +113,10 @@
 
   gap: 1rem;
 }
+
+/* ========================================
+   BOTÕES DO MENU
+======================================== */
 
 .acoes button {
   width: 100%;
@@ -73,33 +133,26 @@
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
-    background-color 0.2s ease;
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
-/* Botão candidato */
+/* ========================================
+   BOTÃO CANDIDATO
+======================================== */
 
 .btn-candidato {
   background-color: #006b8f;
   color: #ffffff;
 }
 
-/* Botão empresa */
+/* ========================================
+   BOTÃO EMPRESA
+======================================== */
 
 .btn-empresa {
   background-color: #f58220;
   color: #ffffff;
-}
-
-/* Efeito dos botões */
-
-.acoes button:hover {
-  transform: translateY(-2px);
-
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.acoes button:active {
-  transform: translateY(0);
 }
 
 /* ========================================
@@ -111,20 +164,28 @@
 
   padding: 0.6rem 1rem;
 
-  border: 1px solid #006b8f;
+  border: 1px solid #006b8f !important;
   border-radius: 8px;
 
   background-color: rgba(255, 255, 255, 0.85);
   color: #006b8f;
 
-  font-size: 0.85rem;
+  font-size: 0.85rem !important;
   font-weight: 600;
+}
 
-  cursor: pointer;
+/* ========================================
+   EFEITOS DOS BOTÕES
+======================================== */
 
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
+.acoes button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.acoes button:active {
+  transform: translateY(0);
 }
 
 .btn-reset:hover {
@@ -154,12 +215,47 @@
 
   transition:
     background-color 0.2s ease,
-    color 0.2s ease;
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .tema:hover {
   background-color: #006b8f;
   color: #ffffff;
+}
+
+/* ========================================
+   API DE CLIMA
+======================================== */
+
+.weather-api {
+  width: 100%;
+
+  padding: 0.75rem 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(255, 255, 255, 0.8);
+
+  color: #004b6b;
+
+  font-size: 0.9rem;
+
+  text-align: center;
+}
+
+.weather-api strong {
+  color: #006b8f;
+}
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+======================================== */
+
+#conteudo-principal {
+  width: 100%;
 }
 
 /* ========================================
@@ -176,8 +272,6 @@
   display: flex;
   justify-content: center;
 }
-
-/* Formulário */
 
 .formulario-candidato form {
   width: 100%;
@@ -201,7 +295,9 @@
   box-shadow: 0 8px 25px rgba(0, 75, 107, 0.12);
 }
 
-/* Título do formulário */
+/* ========================================
+   LEGEND
+======================================== */
 
 .formulario-candidato legend {
   padding: 0 0.75rem;
@@ -220,8 +316,6 @@
   margin-top: 1.5rem;
 }
 
-/* Títulos dos campos */
-
 .campo-formulario > label,
 .campo-formulario > p {
   display: block;
@@ -234,8 +328,6 @@
   font-weight: 700;
 }
 
-/* Texto auxiliar */
-
 .campo-formulario small {
   display: block;
 
@@ -247,7 +339,7 @@
 }
 
 /* ========================================
-   INPUTS
+   INPUTS DE TEXTO E NÚMERO
 ======================================== */
 
 .campo-formulario > input[type="text"],
@@ -260,20 +352,15 @@
   border-radius: 8px;
 
   background-color: #f8fbfc;
-
   color: #333333;
 
   font-size: 1rem;
-
-  outline: none;
 
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,
     background-color 0.2s ease;
 }
-
-/* Input em foco */
 
 .campo-formulario > input[type="text"]:focus,
 .campo-formulario > input[type="number"]:focus {
@@ -297,8 +384,6 @@
   gap: 0.5rem;
 }
 
-/* Radio */
-
 .campo-formulario input[type="radio"] {
   width: 18px;
   height: 18px;
@@ -307,8 +392,6 @@
 
   cursor: pointer;
 }
-
-/* Texto do radio */
 
 .campo-formulario input[type="radio"] + label {
   color: #333333;
@@ -322,25 +405,23 @@
 ======================================== */
 
 .grupo-tecnologias {
+  margin-top: 1rem;
+
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 
   gap: 0.7rem;
-
-  margin-top: 1rem;
 }
 
-/* Cada tecnologia */
-
 .grupo-tecnologias > div {
-  flex: 1 1 180px;
+  width: 100%;
+
+  padding: 0.65rem 0.75rem;
 
   display: flex;
   align-items: center;
 
   gap: 0.6rem;
-
-  padding: 0.65rem 0.75rem;
 
   border: 1px solid #d4e5ea;
   border-radius: 8px;
@@ -352,15 +433,11 @@
     border-color 0.2s ease;
 }
 
-/* Tecnologia ao passar o mouse */
-
 .grupo-tecnologias > div:hover {
   border-color: #006b8f;
 
   background-color: #eef8fb;
 }
-
-/* Checkbox */
 
 .grupo-tecnologias input[type="checkbox"] {
   width: 18px;
@@ -370,8 +447,6 @@
 
   cursor: pointer;
 }
-
-/* Texto do checkbox */
 
 .grupo-tecnologias label {
   color: #333333;
@@ -407,8 +482,6 @@
     background-color 0.2s ease;
 }
 
-/* Hover */
-
 #btn-encontrar-vagas:hover {
   background-color: #d96d12;
 
@@ -417,157 +490,32 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
 }
 
-/* Clique */
-
 #btn-encontrar-vagas:active {
   transform: translateY(0);
 }
 
 /* ========================================
-   RESPONSIVIDADE
-   MOBILE FIRST + FLEXBOX
+   MENSAGEM DE VALIDAÇÃO
 ======================================== */
 
-@media (min-width: 600px) {
-  .formulario-candidato {
-    padding: 3rem 2rem;
-  }
+.mensagem-formulario {
+  margin-top: 1rem;
 
-  .formulario-candidato fieldset {
-    padding: 2rem;
-  }
+  color: #b42318;
 
-  .grupo-tecnologias {
-    gap: 0.8rem;
-  }
-
-  .grupo-tecnologias > div {
-    flex: 1 1 200px;
-  }
-}
-/* RESULTADO DAS VAGAS */
-
-.resultado-vagas {
-  width: 100%;
-  padding: 2rem 1rem;
-  background-color: #f4f9fb;
-}
-
-.resultado-vagas h2 {
-  margin-bottom: 2rem;
-  text-align: center;
-  color: #004b6b;
-}
-
-/* CONTAINER DOS CARDS */
-
-.lista-vagas {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1.5rem;
-}
-
-/* CARD */
-
-.card-vaga {
-  width: 100%;
-  max-width: 320px;
-  padding: 1.5rem;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-
-  background-color: #ffffff;
-
-  border: 1px solid #d4e5ea;
-  border-radius: 12px;
-
-  box-shadow: 0 5px 15px rgba(0, 75, 107, 0.1);
-}
-
-/* MELHOR VAGA */
-
-.card-melhor-vaga {
-  width: 100%;
-  max-width: 500px;
-
-  border: 3px solid #f58220;
-
-  box-shadow: 0 8px 25px rgba(245, 130, 32, 0.25);
-
-  order: -1;
-}
-
-/* TÍTULO DO CARD */
-
-.card-vaga h3 {
-  color: #006b8f;
-  font-size: 1.3rem;
-}
-
-/* EMPRESA */
-
-.card-vaga .empresa {
-  color: #555555;
+  font-size: 0.9rem;
   font-weight: 600;
-}
-
-/* COMPATIBILIDADE */
-
-.compatibilidade {
-  padding: 0.7rem;
-
-  border-radius: 8px;
-
-  background-color: #eef8fb;
-
-  color: #006b8f;
-
-  font-size: 1.1rem;
-  font-weight: 700;
 
   text-align: center;
 }
 
-/* DESTAQUE */
-
-.destaque-melhor-vaga {
-  color: #f58220;
-
-  font-weight: 700;
-
-  text-align: center;
-}
-
-/* HABILIDADES */
-
-.habilidades {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.habilidades h4 {
-  color: #004b6b;
-}
-
-.habilidades p {
-  color: #444444;
-  line-height: 1.5;
-}
 /* ========================================
    RESULTADOS DAS VAGAS
 ======================================== */
 
 .resultado-vagas {
   width: 100%;
+
   padding: 2rem 1rem;
 
   background-color: #f4f9fb;
@@ -579,6 +527,7 @@
   color: #004b6b;
 
   font-size: 1.6rem;
+
   text-align: center;
 }
 
@@ -589,11 +538,11 @@
 .melhor-vaga {
   width: 100%;
 
+  margin-bottom: 3rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  margin-bottom: 3rem;
 }
 
 .melhor-vaga > h3 {
@@ -602,30 +551,22 @@
   color: #f58220;
 
   font-size: 1.3rem;
+
   text-align: center;
 }
 
-.card-melhor-vaga {
+/* ========================================
+   LISTA DAS MELHORES VAGAS
+======================================== */
+
+.lista-melhores-vagas {
   width: 100%;
-  max-width: 500px;
 
-  border: 3px solid #f58220;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  box-shadow: 0 8px 25px rgba(245, 130, 32, 0.2);
-}
-
-.destaque-melhor-vaga {
-  padding: 0.5rem 0.8rem;
-
-  border-radius: 8px;
-
-  background-color: #f58220;
-  color: #ffffff;
-
-  font-size: 0.85rem;
-  font-weight: 700;
-
-  text-align: center;
+  gap: 1.5rem;
 }
 
 /* ========================================
@@ -645,11 +586,13 @@
   color: #004b6b;
 
   font-size: 1.3rem;
+
   text-align: center;
 }
 
 /* ========================================
-   LISTA DE VAGAS - FLEXBOX
+   LISTA DE VAGAS
+   SOMENTE FLEXBOX
 ======================================== */
 
 .lista-vagas {
@@ -685,7 +628,9 @@
   box-shadow: 0 5px 15px rgba(0, 75, 107, 0.1);
 }
 
-.card-vaga h3 {
+/* Título da vaga */
+
+.card-vaga h4 {
   color: #006b8f;
 
   font-size: 1.2rem;
@@ -716,7 +661,34 @@
 }
 
 /* ========================================
-   HABILIDADES
+   MELHOR VAGA - CARD
+======================================== */
+
+.card-vaga.card-melhor-vaga {
+  width: 100%;
+  max-width: 500px;
+
+  border: 3px solid #f58220;
+
+  box-shadow: 0 8px 25px rgba(245, 130, 32, 0.2);
+}
+
+.destaque-melhor-vaga {
+  padding: 0.5rem 0.8rem;
+
+  border-radius: 8px;
+
+  background-color: #f58220;
+  color: #ffffff;
+
+  font-size: 0.85rem;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+/* ========================================
+   HABILIDADES DOS CARDS
 ======================================== */
 
 .habilidades {
@@ -728,8 +700,10 @@
   gap: 0.5rem;
 }
 
-.habilidades h4 {
+.habilidades h5 {
   color: #004b6b;
+
+  font-size: 1rem;
 }
 
 .habilidades ul {
@@ -743,58 +717,75 @@
 }
 
 /* ========================================
-   MELHOR VAGA SOBRESCREVE CARD NORMAL
+   RECOMENDAÇÃO DE ESTUDO
 ======================================== */
 
-.card-vaga.card-melhor-vaga {
-  max-width: 500px;
-
-  border: 3px solid #f58220;
-}
-
-/* ========================================
-   TELAS MAIORES
-   SOMENTE FLEXBOX
-======================================== */
-
-@media (min-width: 700px) {
-  .lista-melhores-vagas {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: stretch;
-  }
-  .resultado-vagas {
-    padding: 3rem 2rem;
-  }
-
-  .lista-vagas {
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    justify-content: center;
-    align-items: stretch;
-  }
-
-  .card-vaga {
-    flex: 1 1 300px;
-
-    max-width: 340px;
-  }
-
-  .card-vaga.card-melhor-vaga {
-    max-width: 500px;
-  }
-}
-.lista-melhores-vagas {
+.recomendacao-estudo {
   width: 100%;
+  max-width: 800px;
+
+  margin: 3rem auto 0;
+  padding: 1.5rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  gap: 1.5rem;
+  gap: 1rem;
+
+  border: 2px solid #006b8f;
+  border-radius: 16px;
+
+  background-color: #ffffff;
+
+  box-shadow: 0 8px 25px rgba(0, 75, 107, 0.12);
+
+  text-align: center;
 }
+
+.recomendacao-estudo h3 {
+  color: #006b8f;
+
+  font-size: 1.3rem;
+}
+
+.recomendacao-estudo p {
+  max-width: 600px;
+
+  color: #444444;
+
+  line-height: 1.6;
+}
+
+.recomendacao-estudo ul {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.7rem;
+
+  list-style: none;
+}
+
+.recomendacao-estudo li {
+  width: 100%;
+
+  padding: 0.65rem 1rem;
+
+  border: 1px solid #d4e5ea;
+  border-radius: 8px;
+
+  background-color: #eef8fb;
+  color: #004b6b;
+
+  font-weight: 700;
+}
+
+/* ========================================
+   MENSAGENS DO SISTEMA
+======================================== */
+
 .mensagem-sistema {
   width: calc(100% - 2rem);
   max-width: 600px;
@@ -827,15 +818,28 @@
 
   line-height: 1.5;
 }
-.mensagem-formulario {
-  margin-top: 1rem;
 
-  color: #b42318;
+/* ========================================
+   RODAPÉ
+======================================== */
 
-  font-size: 0.9rem;
-  font-weight: 600;
+.rodape {
+  width: 100%;
+
+  padding: 1.5rem 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #004b6b;
+  color: #ffffff;
 
   text-align: center;
+}
+
+.rodape p {
+  font-size: 0.9rem;
 }
 
 /* ========================================
@@ -846,23 +850,32 @@ body.tema-escuro {
   background-color: #101820;
   color: #f4f9fb;
 }
+
+/* Cabeçalho */
+
 body.tema-escuro .cabecalho {
   background-image:
     linear-gradient(rgba(10, 24, 32, 0.82), rgba(10, 24, 32, 0.82)),
     url("../img/Imagem de logo.jpg");
 }
+
+/* Botões */
+
 body.tema-escuro .btn-reset,
 body.tema-escuro .tema {
   background-color: #162832;
   color: #ffffff;
 
-  border-color: #4ba8c8;
+  border-color: #4ba8c8 !important;
 }
 
 body.tema-escuro .btn-reset:hover,
 body.tema-escuro .tema:hover {
   background-color: #006b8f;
 }
+
+/* Formulário */
+
 body.tema-escuro .formulario-candidato {
   background-color: #101820;
 }
@@ -884,6 +897,7 @@ body.tema-escuro .campo-formulario > p {
 body.tema-escuro .campo-formulario small {
   color: #c0cbd0;
 }
+
 body.tema-escuro .campo-formulario > input[type="text"],
 body.tema-escuro .campo-formulario > input[type="number"] {
   background-color: #223640;
@@ -898,24 +912,44 @@ body.tema-escuro .campo-formulario > input[type="number"]:focus {
 
   border-color: #4ba8c8;
 }
+
+/* Radio */
+
+body.tema-escuro .campo-formulario input[type="radio"] + label {
+  color: #f4f9fb;
+}
+
+/* Tecnologias */
+
 body.tema-escuro .grupo-tecnologias > div {
   background-color: #223640;
+
   border-color: #3d5966;
 }
 
 body.tema-escuro .grupo-tecnologias > div:hover {
   background-color: #294550;
+
   border-color: #4ba8c8;
 }
 
-body.tema-escuro .grupo-tecnologias label,
-body.tema-escuro .campo-formulario input[type="radio"] + label {
+body.tema-escuro .grupo-tecnologias label {
   color: #f4f9fb;
 }
+
+/* Resultados */
+
 body.tema-escuro .resultado-vagas {
   background-color: #101820;
   color: #f4f9fb;
 }
+
+body.tema-escuro .resultado-vagas > h2,
+body.tema-escuro .outras-vagas > h3 {
+  color: #7cc9e3;
+}
+
+/* Cards */
 
 body.tema-escuro .card-vaga {
   background-color: #162832;
@@ -926,35 +960,72 @@ body.tema-escuro .card-vaga {
   box-shadow: 0 5px 18px rgba(0, 0, 0, 0.3);
 }
 
-body.tema-escuro .card-vaga h3,
-body.tema-escuro .card-vaga h4 {
+body.tema-escuro .card-vaga h4,
+body.tema-escuro .habilidades h5 {
   color: #7cc9e3;
+}
+
+body.tema-escuro .card-vaga p,
+body.tema-escuro .habilidades li {
+  color: #f4f9fb;
 }
 
 body.tema-escuro .card-melhor-vaga {
   border-color: #f58220;
 }
-.weather-api {
-  width: 100%;
 
-  padding: 0.75rem 1rem;
+/* Compatibilidade */
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body.tema-escuro .compatibilidade {
+  background-color: #223640;
 
-  background-color: rgba(255, 255, 255, 0.8);
-
-  color: #004b6b;
-
-  font-size: 0.9rem;
-
-  text-align: center;
+  color: #7cc9e3 !important;
 }
 
-.weather-api strong {
-  color: #006b8f;
+/* Recomendação */
+
+body.tema-escuro .recomendacao-estudo {
+  background-color: #162832;
+
+  border-color: #4ba8c8;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
+
+body.tema-escuro .recomendacao-estudo h3 {
+  color: #7cc9e3;
+}
+
+body.tema-escuro .recomendacao-estudo p {
+  color: #f4f9fb;
+}
+
+body.tema-escuro .recomendacao-estudo li {
+  background-color: #223640;
+
+  border-color: #3d5966;
+
+  color: #f4f9fb;
+}
+
+/* Mensagens */
+
+body.tema-escuro .mensagem-sistema {
+  background-color: #162832;
+
+  border-color: #4ba8c8;
+}
+
+body.tema-escuro .mensagem-sistema h2 {
+  color: #7cc9e3;
+}
+
+body.tema-escuro .mensagem-sistema p {
+  color: #f4f9fb;
+}
+
+/* Clima */
+
 body.tema-escuro .weather-api {
   background-color: rgba(16, 24, 32, 0.85);
 
@@ -963,4 +1034,229 @@ body.tema-escuro .weather-api {
 
 body.tema-escuro .weather-api strong {
   color: #7cc9e3;
+}
+
+/* Rodapé */
+
+body.tema-escuro .rodape {
+  background-color: #071116;
+
+  color: #f4f9fb;
+}
+
+/* ========================================
+   TABLET
+   600px OU MAIS
+======================================== */
+
+@media (min-width: 600px) {
+  /* ========================================
+     MENU
+  ======================================== */
+
+  .menu {
+    padding: 2rem;
+  }
+
+  /* ========================================
+     FORMULÁRIO
+  ======================================== */
+
+  .formulario-candidato {
+    padding: 3rem 2rem;
+  }
+
+  .formulario-candidato fieldset {
+    padding: 2rem;
+  }
+
+  /* ========================================
+     TECNOLOGIAS
+  ======================================== */
+
+  .grupo-tecnologias {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 0.8rem;
+  }
+
+  .grupo-tecnologias > div {
+    flex: 1 1 200px;
+
+    width: auto;
+  }
+
+  /* ========================================
+     RESULTADOS
+  ======================================== */
+
+  .resultado-vagas {
+    padding: 3rem 2rem;
+  }
+
+  /* ========================================
+     LISTA DE VAGAS
+  ======================================== */
+
+  .lista-vagas {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .card-vaga {
+    flex: 1 1 280px;
+
+    max-width: 340px;
+  }
+
+  /* ========================================
+     MELHORES VAGAS
+  ======================================== */
+
+  .lista-melhores-vagas {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .card-vaga.card-melhor-vaga {
+    flex: 1 1 400px;
+
+    max-width: 500px;
+  }
+
+  /* ========================================
+     RECOMENDAÇÕES
+  ======================================== */
+
+  .recomendacao-estudo {
+    padding: 2rem;
+  }
+
+  .recomendacao-estudo ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .recomendacao-estudo li {
+    flex: 1 1 180px;
+
+    max-width: 240px;
+  }
+}
+
+/* ========================================
+   DESKTOP
+   1024px OU MAIS
+======================================== */
+
+@media (min-width: 1024px) {
+  /* ========================================
+     MENU
+  ======================================== */
+
+  .menu {
+    padding: 3rem;
+  }
+
+  .acoes {
+    max-width: 900px;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .acoes button {
+    flex: 1 1 0;
+  }
+
+  .btn-reset {
+    align-self: stretch;
+  }
+
+  /* ========================================
+     FORMULÁRIO
+  ======================================== */
+
+  .formulario-candidato {
+    padding: 4rem 2rem;
+  }
+
+  .formulario-candidato form {
+    max-width: 850px;
+  }
+
+  .formulario-candidato fieldset {
+    padding: 2.5rem;
+  }
+
+  /* ========================================
+     TECNOLOGIAS
+  ======================================== */
+
+  .grupo-tecnologias > div {
+    flex: 1 1 220px;
+  }
+
+  /* ========================================
+     RESULTADOS
+  ======================================== */
+
+  .resultado-vagas {
+    padding: 4rem 3rem;
+  }
+
+  .resultado-vagas > h2 {
+    font-size: 2rem;
+  }
+
+  /* ========================================
+     OUTRAS VAGAS
+  ======================================== */
+
+  .outras-vagas {
+    max-width: 1200px;
+  }
+
+  .lista-vagas {
+    gap: 2rem;
+  }
+
+  .card-vaga {
+    flex: 1 1 300px;
+
+    max-width: 350px;
+  }
+
+  /* ========================================
+     MELHOR VAGA
+  ======================================== */
+
+  .card-vaga.card-melhor-vaga {
+    max-width: 520px;
+  }
+
+  /* ========================================
+     RECOMENDAÇÃO DE ESTUDO
+  ======================================== */
+
+  .recomendacao-estudo {
+    max-width: 900px;
+
+    margin-top: 4rem;
+  }
+
+  /* ========================================
+     MENSAGENS
+  ======================================== */
+
+  .mensagem-sistema {
+    margin: 3rem auto;
+  }
 }
