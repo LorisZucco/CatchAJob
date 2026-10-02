@@ -934,3 +934,33 @@ body.tema-escuro .card-vaga h4 {
 body.tema-escuro .card-melhor-vaga {
   border-color: #f58220;
 }
+.weather-api {
+  width: 100%;
+
+  padding: 0.75rem 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(255, 255, 255, 0.8);
+
+  color: #004b6b;
+
+  font-size: 0.9rem;
+
+  text-align: center;
+}
+
+.weather-api strong {
+  color: #006b8f;
+}
+body.tema-escuro .weather-api {
+  background-color: rgba(16, 24, 32, 0.85);
+
+  color: #f4f9fb;
+}
+
+body.tema-escuro .weather-api strong {
+  color: #7cc9e3;
+}
