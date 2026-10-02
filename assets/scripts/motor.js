@@ -223,6 +223,41 @@ function ordenarPorCompatibilidade(resultados) {
   });
 }
 
+function recomendarEstudos(resultados) {
+  const habilidadesFaltantes = resultados.flatMap((resultado) => {
+    return resultado.faltantes;
+  });
+
+  if (habilidadesFaltantes.length === 0) {
+    return [];
+  }
+
+  const quantidadePorHabilidade = {};
+
+  habilidadesFaltantes.forEach((habilidade) => {
+    if (quantidadePorHabilidade[habilidade]) {
+      quantidadePorHabilidade[habilidade]++;
+    } else {
+      quantidadePorHabilidade[habilidade] = 1;
+    }
+  });
+
+  let maiorQuantidade = 0;
+
+  Object.values(quantidadePorHabilidade).forEach((quantidade) => {
+    if (quantidade > maiorQuantidade) {
+      maiorQuantidade = quantidade;
+    }
+  });
+
+  const recomendacoes = Object.keys(quantidadePorHabilidade).filter(
+    (habilidade) => {
+      return quantidadePorHabilidade[habilidade] === maiorQuantidade;
+    },
+  );
+
+  return recomendacoes;
+}
 // ========================================
 // EXPORTAÇÕES
 // ========================================
@@ -237,4 +272,5 @@ export {
   encontrarMelhoresVagas,
   ordenarPorCompatibilidade,
   contarAnalise,
+  recomendarEstudos,
 };
