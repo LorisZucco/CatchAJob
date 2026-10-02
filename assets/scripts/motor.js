@@ -51,14 +51,16 @@ class Vaga {
   }
 
   verificarExperiencia(experienciaCandidato) {
-    console.log("Experiência candidato:", experienciaCandidato);
-    console.log("Experiência mínima:", this.experienciaMinima);
-
     if (experienciaCandidato >= this.experienciaMinima) {
       return true;
     }
 
     return false;
+  }
+
+  // Método que será sobrescrito pelas subclasses
+  getArea() {
+    return "Desenvolvimento";
   }
 
   analisar(habilidades, experienciaCandidato) {
@@ -79,8 +81,85 @@ class Vaga {
   }
 }
 
+// ========================================
+// HERANÇA
+// ========================================
+
+class VagaFrontEnd extends Vaga {
+  getArea() {
+    return "Desenvolvimento Front-end";
+  }
+}
+
+class VagaBackEnd extends Vaga {
+  getArea() {
+    return "Desenvolvimento Back-end";
+  }
+}
+
+class VagaFullStack extends Vaga {
+  getArea() {
+    return "Desenvolvimento Full Stack";
+  }
+}
+
+function criarContadorAnalises() {
+  let quantidadeAnalises = 0;
+
+  return function () {
+    quantidadeAnalises++;
+
+    return quantidadeAnalises;
+  };
+}
+
+const contarAnalise = criarContadorAnalises();
+// ========================================
+// CRIAÇÃO DAS VAGAS
+// ========================================
+
 function criarVagas(vagas) {
   return vagas.map((vaga) => {
+    if (vaga.categoria === "Front-end") {
+      return new VagaFrontEnd(
+        vaga.id,
+        vaga.empresa,
+        vaga.cargo,
+        vaga.categoria,
+        vaga.requisitos,
+        vaga.salario,
+        vaga.modalidade,
+        vaga.experienciaMinima,
+      );
+    }
+
+    if (vaga.categoria === "Back-end") {
+      return new VagaBackEnd(
+        vaga.id,
+        vaga.empresa,
+        vaga.cargo,
+        vaga.categoria,
+        vaga.requisitos,
+        vaga.salario,
+        vaga.modalidade,
+        vaga.experienciaMinima,
+      );
+    }
+
+    if (vaga.categoria === "Full Stack") {
+      return new VagaFullStack(
+        vaga.id,
+        vaga.empresa,
+        vaga.cargo,
+        vaga.categoria,
+        vaga.requisitos,
+        vaga.salario,
+        vaga.modalidade,
+        vaga.experienciaMinima,
+      );
+    }
+
+    // Caso apareça alguma categoria diferente no JSON
     return new Vaga(
       vaga.id,
       vaga.empresa,
@@ -93,6 +172,11 @@ function criarVagas(vagas) {
     );
   });
 }
+
+// ========================================
+// FILTRO POR CATEGORIA
+// ========================================
+
 function filtrarVagasPorCategoria(vagas, categoriaCandidato) {
   return vagas.filter((vaga) => {
     if (categoriaCandidato === "Full Stack") {
@@ -104,6 +188,11 @@ function filtrarVagasPorCategoria(vagas, categoriaCandidato) {
     );
   });
 }
+
+// ========================================
+// MELHORES VAGAS
+// ========================================
+
 function encontrarMelhoresVagas(resultados) {
   if (resultados.length === 0) {
     return [];
@@ -124,16 +213,28 @@ function encontrarMelhoresVagas(resultados) {
   return melhoresVagas;
 }
 
+// ========================================
+// ORDENAÇÃO
+// ========================================
+
 function ordenarPorCompatibilidade(resultados) {
   return resultados.toSorted((a, b) => {
     return b.percentual - a.percentual;
   });
 }
 
+// ========================================
+// EXPORTAÇÕES
+// ========================================
+
 export {
   Vaga,
+  VagaFrontEnd,
+  VagaBackEnd,
+  VagaFullStack,
   criarVagas,
   filtrarVagasPorCategoria,
   encontrarMelhoresVagas,
   ordenarPorCompatibilidade,
+  contarAnalise,
 };

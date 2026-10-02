@@ -18,18 +18,16 @@ import {
   filtrarVagasPorCategoria,
   encontrarMelhoresVagas,
   ordenarPorCompatibilidade,
+  contarAnalise,
 } from "./motor.js";
 
 import { alterarTema, carregarTema } from "./tema.js";
-
-import { carregarClima } from "./clima.js";
 
 const btnCandidato = document.getElementById("btn-candidato");
 const btnReset = document.getElementById("btn-reset");
 const btnTema = document.querySelector(".tema");
 
 carregarTema();
-carregarClima();
 // ========================================
 // ANALISAR PERFIL
 // ========================================
@@ -92,7 +90,9 @@ async function analisarPerfil(perfil) {
 
     return;
   }
+  const numeroAnalise = contarAnalise();
 
+  console.log(`Análise número ${numeroAnalise} realizada nesta sessão.`);
   // ========================================
   // ANALISA SKILLS E EXPERIÊNCIA
   // ========================================
