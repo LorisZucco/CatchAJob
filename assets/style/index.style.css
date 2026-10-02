@@ -24,19 +24,12 @@ body {
   color: #333333;
 
   font-family: Arial, Helvetica, sans-serif;
-
   line-height: 1.5;
 }
 
 /* ========================================
    ACESSIBILIDADE
 ======================================== */
-
-/*
-  Mantém o H1 disponível para leitores
-  de tela sem interferir visualmente
-  na logo do cabeçalho.
-*/
 
 .titulo-principal {
   position: absolute;
@@ -56,8 +49,6 @@ body {
   border: 0;
 }
 
-/* Foco visível para navegação por teclado */
-
 button:focus-visible,
 input:focus-visible {
   outline: 3px solid #f58220;
@@ -65,23 +56,60 @@ input:focus-visible {
 }
 
 /* ========================================
-   CABEÇALHO
+   CABEÇALHO / HERO
 ======================================== */
 
 .cabecalho {
+  position: relative;
+
   width: 100%;
   min-height: 100vh;
 
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.82)),
-    url("../img/Imagem de logo.jpg");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  padding: 2rem 1rem;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+/* ========================================
+   IMAGEM DO HERO
+======================================== */
+
+.logo-site {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0.2;
+
+  z-index: 0;
+}
+
+/* Camada branca sobre a imagem */
+
+.cabecalho::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background-color: rgba(255, 255, 255, 0.55);
+
+  z-index: 1;
+
+  pointer-events: none;
 }
 
 /* ========================================
@@ -89,15 +117,19 @@ input:focus-visible {
 ======================================== */
 
 .menu {
-  width: 100%;
-  min-height: 100vh;
+  position: relative;
 
-  padding: 1.5rem;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 560px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  gap: 1.5rem;
 }
 
 /* ========================================
@@ -106,7 +138,6 @@ input:focus-visible {
 
 .acoes {
   width: 100%;
-  max-width: 500px;
 
   display: flex;
   flex-direction: column;
@@ -115,15 +146,24 @@ input:focus-visible {
 }
 
 /* ========================================
-   BOTÕES DO MENU
+   BOTÕES
 ======================================== */
 
-.acoes button {
+button {
+  font: inherit;
+}
+
+.btn-candidato,
+.btn-empresa {
   width: 100%;
-  min-height: 60px;
+  min-height: 62px;
+
+  padding: 0.8rem 1rem;
 
   border: none;
   border-radius: 12px;
+
+  color: #ffffff;
 
   font-size: 1.1rem;
   font-weight: 700;
@@ -133,8 +173,7 @@ input:focus-visible {
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
-    background-color 0.2s ease,
-    color 0.2s ease;
+    background-color 0.2s ease;
 }
 
 /* ========================================
@@ -143,7 +182,14 @@ input:focus-visible {
 
 .btn-candidato {
   background-color: #006b8f;
-  color: #ffffff;
+}
+
+.btn-candidato:hover {
+  background-color: #005a78;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 6px 16px rgba(0, 107, 143, 0.25);
 }
 
 /* ========================================
@@ -152,7 +198,14 @@ input:focus-visible {
 
 .btn-empresa {
   background-color: #f58220;
-  color: #ffffff;
+}
+
+.btn-empresa:hover {
+  background-color: #d96d12;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 6px 16px rgba(245, 130, 32, 0.25);
 }
 
 /* ========================================
@@ -162,35 +215,30 @@ input:focus-visible {
 .btn-reset {
   align-self: center;
 
-  padding: 0.6rem 1rem;
+  width: auto;
+  min-height: auto;
 
-  border: 1px solid #006b8f !important;
-  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
 
-  background-color: rgba(255, 255, 255, 0.85);
+  border: none;
+
+  background-color: transparent;
   color: #006b8f;
 
-  font-size: 0.85rem !important;
-  font-weight: 600;
-}
+  font-size: 1rem;
+  font-weight: 700;
 
-/* ========================================
-   EFEITOS DOS BOTÕES
-======================================== */
+  cursor: pointer;
 
-.acoes button:hover {
-  transform: translateY(-2px);
-
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.acoes button:active {
-  transform: translateY(0);
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .btn-reset:hover {
-  background-color: #006b8f;
-  color: #ffffff;
+  color: #f58220;
+
+  transform: translateY(-1px);
 }
 
 /* ========================================
@@ -198,18 +246,18 @@ input:focus-visible {
 ======================================== */
 
 .tema {
-  margin-top: 1.5rem;
+  min-height: 48px;
 
-  padding: 0.75rem 1rem;
+  padding: 0.7rem 1rem;
 
   border: 2px solid #006b8f;
-  border-radius: 8px;
+  border-radius: 9px;
 
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.88);
   color: #004b6b;
 
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 700;
 
   cursor: pointer;
 
@@ -222,23 +270,28 @@ input:focus-visible {
 .tema:hover {
   background-color: #006b8f;
   color: #ffffff;
+
+  transform: translateY(-2px);
 }
 
 /* ========================================
-   API DE CLIMA
+   CLIMA
 ======================================== */
 
 .weather-api {
-  width: 100%;
+  position: relative;
 
-  padding: 0.75rem 1rem;
+  z-index: 2;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: auto;
+  max-width: 600px;
 
-  background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 1.5rem;
+  padding: 0.65rem 1rem;
 
+  border-radius: 10px;
+
+  background-color: rgba(255, 255, 255, 0.88);
   color: #004b6b;
 
   font-size: 0.9rem;
@@ -246,8 +299,10 @@ input:focus-visible {
   text-align: center;
 }
 
-.weather-api strong {
-  color: #006b8f;
+/* Não mostra uma caixa vazia */
+
+.weather-api:empty {
+  display: none;
 }
 
 /* ========================================
@@ -265,17 +320,17 @@ input:focus-visible {
 .formulario-candidato {
   width: 100%;
 
-  padding: 2rem 1rem;
-
-  background-color: #f4f9fb;
+  padding: 3rem 1rem;
 
   display: flex;
   justify-content: center;
+
+  background-color: #f4f9fb;
 }
 
 .formulario-candidato form {
   width: 100%;
-  max-width: 700px;
+  max-width: 760px;
 }
 
 /* ========================================
@@ -324,7 +379,6 @@ input:focus-visible {
 
   color: #004b6b;
 
-  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -339,7 +393,7 @@ input:focus-visible {
 }
 
 /* ========================================
-   INPUTS DE TEXTO E NÚMERO
+   INPUTS
 ======================================== */
 
 .campo-formulario > input[type="text"],
@@ -358,8 +412,7 @@ input:focus-visible {
 
   transition:
     border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
+    box-shadow 0.2s ease;
 }
 
 .campo-formulario > input[type="text"]:focus,
@@ -394,14 +447,11 @@ input:focus-visible {
 }
 
 .campo-formulario input[type="radio"] + label {
-  color: #333333;
-
   cursor: pointer;
 }
 
 /* ========================================
-   GRUPO DE TECNOLOGIAS
-   SOMENTE FLEXBOX
+   TECNOLOGIAS
 ======================================== */
 
 .grupo-tecnologias {
@@ -416,7 +466,7 @@ input:focus-visible {
 .grupo-tecnologias > div {
   width: 100%;
 
-  padding: 0.65rem 0.75rem;
+  padding: 0.7rem 0.8rem;
 
   display: flex;
   align-items: center;
@@ -427,10 +477,6 @@ input:focus-visible {
   border-radius: 8px;
 
   background-color: #f8fbfc;
-
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease;
 }
 
 .grupo-tecnologias > div:hover {
@@ -449,8 +495,6 @@ input:focus-visible {
 }
 
 .grupo-tecnologias label {
-  color: #333333;
-
   cursor: pointer;
 }
 
@@ -462,7 +506,6 @@ input:focus-visible {
   width: 100%;
 
   margin-top: 2rem;
-
   padding: 0.9rem 1rem;
 
   border: none;
@@ -477,9 +520,9 @@ input:focus-visible {
   cursor: pointer;
 
   transition:
+    background-color 0.2s ease,
     transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
+    box-shadow 0.2s ease;
 }
 
 #btn-encontrar-vagas:hover {
@@ -490,35 +533,37 @@ input:focus-visible {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
 }
 
-#btn-encontrar-vagas:active {
-  transform: translateY(0);
-}
-
 /* ========================================
-   MENSAGEM DE VALIDAÇÃO
+   MENSAGEM DO FORMULÁRIO
 ======================================== */
 
 .mensagem-formulario {
+  min-height: 1.2rem;
+
   margin-top: 1rem;
 
   color: #b42318;
 
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 700;
 
   text-align: center;
 }
 
 /* ========================================
-   RESULTADOS DAS VAGAS
+   RESULTADOS
 ======================================== */
 
 .resultado-vagas {
   width: 100%;
 
-  padding: 2rem 1rem;
+  padding: 3rem 1rem;
 
   background-color: #f4f9fb;
+}
+
+.resultado-vagas:empty {
+  padding: 0;
 }
 
 .resultado-vagas > h2 {
@@ -555,10 +600,6 @@ input:focus-visible {
   text-align: center;
 }
 
-/* ========================================
-   LISTA DAS MELHORES VAGAS
-======================================== */
-
 .lista-melhores-vagas {
   width: 100%;
 
@@ -575,7 +616,7 @@ input:focus-visible {
 
 .outras-vagas {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1200px;
 
   margin: 0 auto;
 }
@@ -589,11 +630,6 @@ input:focus-visible {
 
   text-align: center;
 }
-
-/* ========================================
-   LISTA DE VAGAS
-   SOMENTE FLEXBOX
-======================================== */
 
 .lista-vagas {
   width: 100%;
@@ -611,7 +647,7 @@ input:focus-visible {
 
 .card-vaga {
   width: 100%;
-  max-width: 340px;
+  max-width: 360px;
 
   padding: 1.5rem;
 
@@ -628,8 +664,6 @@ input:focus-visible {
   box-shadow: 0 5px 15px rgba(0, 75, 107, 0.1);
 }
 
-/* Título da vaga */
-
 .card-vaga h4 {
   color: #006b8f;
 
@@ -638,8 +672,6 @@ input:focus-visible {
 
 .card-vaga p {
   color: #444444;
-
-  line-height: 1.5;
 }
 
 /* ========================================
@@ -665,8 +697,7 @@ input:focus-visible {
 ======================================== */
 
 .card-vaga.card-melhor-vaga {
-  width: 100%;
-  max-width: 500px;
+  max-width: 520px;
 
   border: 3px solid #f58220;
 
@@ -674,6 +705,8 @@ input:focus-visible {
 }
 
 .destaque-melhor-vaga {
+  align-self: center;
+
   padding: 0.5rem 0.8rem;
 
   border-radius: 8px;
@@ -688,7 +721,7 @@ input:focus-visible {
 }
 
 /* ========================================
-   HABILIDADES DOS CARDS
+   HABILIDADES
 ======================================== */
 
 .habilidades {
@@ -722,7 +755,7 @@ input:focus-visible {
 
 .recomendacao-estudo {
   width: 100%;
-  max-width: 800px;
+  max-width: 850px;
 
   margin: 3rem auto 0;
   padding: 1.5rem;
@@ -745,16 +778,12 @@ input:focus-visible {
 
 .recomendacao-estudo h3 {
   color: #006b8f;
-
-  font-size: 1.3rem;
 }
 
 .recomendacao-estudo p {
-  max-width: 600px;
+  max-width: 620px;
 
   color: #444444;
-
-  line-height: 1.6;
 }
 
 .recomendacao-estudo ul {
@@ -769,9 +798,7 @@ input:focus-visible {
 }
 
 .recomendacao-estudo li {
-  width: 100%;
-
-  padding: 0.65rem 1rem;
+  padding: 0.7rem 1rem;
 
   border: 1px solid #d4e5ea;
   border-radius: 8px;
@@ -788,9 +815,9 @@ input:focus-visible {
 
 .mensagem-sistema {
   width: calc(100% - 2rem);
-  max-width: 600px;
+  max-width: 620px;
 
-  margin: 2rem auto;
+  margin: 2.5rem auto;
   padding: 2rem 1.5rem;
 
   display: flex;
@@ -815,8 +842,6 @@ input:focus-visible {
 
 .mensagem-sistema p {
   color: #444444;
-
-  line-height: 1.5;
 }
 
 /* ========================================
@@ -838,10 +863,6 @@ input:focus-visible {
   text-align: center;
 }
 
-.rodape p {
-  font-size: 0.9rem;
-}
-
 /* ========================================
    TEMA ESCURO
 ======================================== */
@@ -851,197 +872,90 @@ body.tema-escuro {
   color: #f4f9fb;
 }
 
-/* Cabeçalho */
+/* Hero escuro */
 
-body.tema-escuro .cabecalho {
-  background-image:
-    linear-gradient(rgba(10, 24, 32, 0.82), rgba(10, 24, 32, 0.82)),
-    url("../img/Imagem de logo.jpg");
+body.tema-escuro .cabecalho::after {
+  background-color: rgba(10, 24, 32, 0.72);
 }
 
-/* Botões */
+body.tema-escuro .logo-site {
+  opacity: 0.32;
+}
 
-body.tema-escuro .btn-reset,
+body.tema-escuro .btn-reset {
+  color: #7cc9e3;
+}
+
 body.tema-escuro .tema {
-  background-color: #162832;
+  background-color: rgba(22, 40, 50, 0.9);
   color: #ffffff;
 
-  border-color: #4ba8c8 !important;
+  border-color: #4ba8c8;
 }
 
-body.tema-escuro .btn-reset:hover,
-body.tema-escuro .tema:hover {
-  background-color: #006b8f;
+body.tema-escuro .weather-api {
+  background-color: rgba(22, 40, 50, 0.9);
+  color: #ffffff;
 }
 
 /* Formulário */
 
-body.tema-escuro .formulario-candidato {
-  background-color: #101820;
-}
-
-body.tema-escuro .formulario-candidato fieldset {
-  background-color: #162832;
-
-  border-color: #4ba8c8;
-
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-body.tema-escuro .formulario-candidato legend,
-body.tema-escuro .campo-formulario > label,
-body.tema-escuro .campo-formulario > p {
-  color: #7cc9e3;
-}
-
-body.tema-escuro .campo-formulario small {
-  color: #c0cbd0;
-}
-
-body.tema-escuro .campo-formulario > input[type="text"],
-body.tema-escuro .campo-formulario > input[type="number"] {
-  background-color: #223640;
-  color: #ffffff;
-
-  border-color: #4b6977;
-}
-
-body.tema-escuro .campo-formulario > input[type="text"]:focus,
-body.tema-escuro .campo-formulario > input[type="number"]:focus {
-  background-color: #293f4a;
-
-  border-color: #4ba8c8;
-}
-
-/* Radio */
-
-body.tema-escuro .campo-formulario input[type="radio"] + label {
-  color: #f4f9fb;
-}
-
-/* Tecnologias */
-
-body.tema-escuro .grupo-tecnologias > div {
-  background-color: #223640;
-
-  border-color: #3d5966;
-}
-
-body.tema-escuro .grupo-tecnologias > div:hover {
-  background-color: #294550;
-
-  border-color: #4ba8c8;
-}
-
-body.tema-escuro .grupo-tecnologias label {
-  color: #f4f9fb;
-}
-
-/* Resultados */
-
+body.tema-escuro .formulario-candidato,
 body.tema-escuro .resultado-vagas {
   background-color: #101820;
-  color: #f4f9fb;
 }
 
-body.tema-escuro .resultado-vagas > h2,
-body.tema-escuro .outras-vagas > h3 {
-  color: #7cc9e3;
-}
-
-/* Cards */
-
-body.tema-escuro .card-vaga {
-  background-color: #162832;
-  color: #f4f9fb;
-
-  border-color: #3d5966;
-
-  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.3);
-}
-
-body.tema-escuro .card-vaga h4,
-body.tema-escuro .habilidades h5 {
-  color: #7cc9e3;
-}
-
-body.tema-escuro .card-vaga p,
-body.tema-escuro .habilidades li {
-  color: #f4f9fb;
-}
-
-body.tema-escuro .card-melhor-vaga {
-  border-color: #f58220;
-}
-
-/* Compatibilidade */
-
-body.tema-escuro .compatibilidade {
-  background-color: #223640;
-
-  color: #7cc9e3 !important;
-}
-
-/* Recomendação */
-
-body.tema-escuro .recomendacao-estudo {
-  background-color: #162832;
-
-  border-color: #4ba8c8;
-
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-body.tema-escuro .recomendacao-estudo h3 {
-  color: #7cc9e3;
-}
-
-body.tema-escuro .recomendacao-estudo p {
-  color: #f4f9fb;
-}
-
-body.tema-escuro .recomendacao-estudo li {
-  background-color: #223640;
-
-  border-color: #3d5966;
-
-  color: #f4f9fb;
-}
-
-/* Mensagens */
-
+body.tema-escuro .formulario-candidato fieldset,
+body.tema-escuro .card-vaga,
+body.tema-escuro .recomendacao-estudo,
 body.tema-escuro .mensagem-sistema {
   background-color: #162832;
 
   border-color: #4ba8c8;
 }
 
+body.tema-escuro .formulario-candidato legend,
+body.tema-escuro .campo-formulario > label,
+body.tema-escuro .campo-formulario > p,
+body.tema-escuro .resultado-vagas > h2,
+body.tema-escuro .outras-vagas > h3,
+body.tema-escuro .card-vaga h4,
+body.tema-escuro .habilidades h5,
+body.tema-escuro .recomendacao-estudo h3,
 body.tema-escuro .mensagem-sistema h2 {
   color: #7cc9e3;
 }
 
+body.tema-escuro .campo-formulario small,
+body.tema-escuro .card-vaga p,
+body.tema-escuro .habilidades li,
+body.tema-escuro .recomendacao-estudo p,
 body.tema-escuro .mensagem-sistema p {
   color: #f4f9fb;
 }
 
-/* Clima */
+body.tema-escuro .campo-formulario > input[type="text"],
+body.tema-escuro .campo-formulario > input[type="number"],
+body.tema-escuro .grupo-tecnologias > div {
+  background-color: #223640;
+  color: #ffffff;
 
-body.tema-escuro .weather-api {
-  background-color: rgba(16, 24, 32, 0.85);
-
-  color: #f4f9fb;
+  border-color: #3d5966;
 }
 
-body.tema-escuro .weather-api strong {
-  color: #7cc9e3;
+body.tema-escuro .campo-formulario input + label,
+body.tema-escuro .grupo-tecnologias label {
+  color: #ffffff;
 }
 
-/* Rodapé */
+body.tema-escuro .compatibilidade,
+body.tema-escuro .recomendacao-estudo li {
+  background-color: #223640;
+  color: #7cc9e3 !important;
+}
 
 body.tema-escuro .rodape {
   background-color: #071116;
-
-  color: #f4f9fb;
 }
 
 /* ========================================
@@ -1050,35 +964,17 @@ body.tema-escuro .rodape {
 ======================================== */
 
 @media (min-width: 600px) {
-  /* ========================================
-     MENU
-  ======================================== */
+  .cabecalho {
+    padding: 2rem;
+  }
 
   .menu {
-    padding: 2rem;
+    max-width: 560px;
   }
-
-  /* ========================================
-     FORMULÁRIO
-  ======================================== */
-
-  .formulario-candidato {
-    padding: 3rem 2rem;
-  }
-
-  .formulario-candidato fieldset {
-    padding: 2rem;
-  }
-
-  /* ========================================
-     TECNOLOGIAS
-  ======================================== */
 
   .grupo-tecnologias {
     flex-direction: row;
     flex-wrap: wrap;
-
-    gap: 0.8rem;
   }
 
   .grupo-tecnologias > div {
@@ -1087,19 +983,8 @@ body.tema-escuro .rodape {
     width: auto;
   }
 
-  /* ========================================
-     RESULTADOS
-  ======================================== */
-
-  .resultado-vagas {
-    padding: 3rem 2rem;
-  }
-
-  /* ========================================
-     LISTA DE VAGAS
-  ======================================== */
-
-  .lista-vagas {
+  .lista-vagas,
+  .lista-melhores-vagas {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -1112,29 +997,10 @@ body.tema-escuro .rodape {
     max-width: 340px;
   }
 
-  /* ========================================
-     MELHORES VAGAS
-  ======================================== */
-
-  .lista-melhores-vagas {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: stretch;
-  }
-
   .card-vaga.card-melhor-vaga {
-    flex: 1 1 400px;
+    flex: 1 1 420px;
 
-    max-width: 500px;
-  }
-
-  /* ========================================
-     RECOMENDAÇÕES
-  ======================================== */
-
-  .recomendacao-estudo {
-    padding: 2rem;
+    max-width: 520px;
   }
 
   .recomendacao-estudo ul {
@@ -1156,33 +1022,29 @@ body.tema-escuro .rodape {
 ======================================== */
 
 @media (min-width: 1024px) {
-  /* ========================================
-     MENU
-  ======================================== */
+  .cabecalho {
+    min-height: 100vh;
 
-  .menu {
     padding: 3rem;
   }
 
+  /*
+    Mantém exatamente a ideia visual original:
+    botões principais empilhados.
+  */
+
+  .menu {
+    max-width: 525px;
+  }
+
   .acoes {
-    max-width: 900px;
-
-    flex-direction: row;
-    justify-content: center;
-    align-items: stretch;
+    flex-direction: column;
   }
 
-  .acoes button {
-    flex: 1 1 0;
+  .btn-candidato,
+  .btn-empresa {
+    min-height: 62px;
   }
-
-  .btn-reset {
-    align-self: stretch;
-  }
-
-  /* ========================================
-     FORMULÁRIO
-  ======================================== */
 
   .formulario-candidato {
     padding: 4rem 2rem;
@@ -1196,32 +1058,12 @@ body.tema-escuro .rodape {
     padding: 2.5rem;
   }
 
-  /* ========================================
-     TECNOLOGIAS
-  ======================================== */
-
-  .grupo-tecnologias > div {
-    flex: 1 1 220px;
-  }
-
-  /* ========================================
-     RESULTADOS
-  ======================================== */
-
   .resultado-vagas {
     padding: 4rem 3rem;
   }
 
   .resultado-vagas > h2 {
     font-size: 2rem;
-  }
-
-  /* ========================================
-     OUTRAS VAGAS
-  ======================================== */
-
-  .outras-vagas {
-    max-width: 1200px;
   }
 
   .lista-vagas {
@@ -1234,29 +1076,7 @@ body.tema-escuro .rodape {
     max-width: 350px;
   }
 
-  /* ========================================
-     MELHOR VAGA
-  ======================================== */
-
   .card-vaga.card-melhor-vaga {
-    max-width: 520px;
-  }
-
-  /* ========================================
-     RECOMENDAÇÃO DE ESTUDO
-  ======================================== */
-
-  .recomendacao-estudo {
-    max-width: 900px;
-
-    margin-top: 4rem;
-  }
-
-  /* ========================================
-     MENSAGENS
-  ======================================== */
-
-  .mensagem-sistema {
-    margin: 3rem auto;
+    max-width: 540px;
   }
 }
